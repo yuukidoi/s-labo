@@ -5,13 +5,20 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         
-        
+
         
         <div class="collpase navbar-collapse justify-content-end" id ="navbarSupportedContent">
             <ul class="navbar-nav">
+               
+            <% if logged_in? %>
+                
+                <li class="nav-item"><a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a></li>
+                <li class="nav-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>                
+            <% else %>
                 <li class="nav-item"><%= link_to '登録', signup_path, class: 'nav-link' %></li>
-                <li class="nav-item"><a href="#" class="nav-link">ログイン</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">ユーザー</a></li>
+                <li class="nav-item"><%= link_to 'ログイン', login_path, class: 'nav-link' %></li>
+            <% end %>
+                
             </ul>
         </div>
     </nav>
