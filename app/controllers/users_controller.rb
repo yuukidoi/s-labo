@@ -28,9 +28,19 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
+    
+    if @user.update(user_params)
+      flash[:success] = '更新しました'
+      redirect_to @user
+    else
+      flash.now[:danger] = "更新できませんでした"
+      render :edit
+    end 
   end
 
   def destroy
@@ -41,5 +51,5 @@ end
 private
 
 def user_params
-  params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :image_cache)
 end 

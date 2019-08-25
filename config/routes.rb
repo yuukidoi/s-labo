@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   
   get 'signup', to: 'users#new'
   resources :users
-  
+  post 'edit', to: 'users#update'
   resources :documents
   
   

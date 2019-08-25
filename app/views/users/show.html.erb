@@ -2,13 +2,19 @@
   <div class="col-sm-4">
     <div class="card">
       <div class="card-header">
+          <% if @user.image? %>
+    <%= image_tag @user.image.thumb.url %>
+  <% else %>
+    <%= image_tag 's512_f_object_92_2bg.jpg' %>
+  <% end %>
         <h3 class="card-img"><%= @user.name %></h3>
       </div>
       <div class="card-body">
-         <%= '編集' %>
+         <%= link_to '編集', edit_user_path %>
       </div>
     </div>
   </div>
+
   <div class="col-sm-8">
    <ul class='profile'>
        <li>名前</li>
