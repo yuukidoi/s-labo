@@ -2,4 +2,26 @@
     <div class="text-center title">
         <h1>指導案　Labo.</h1>
     </div>
+    
 </div>
+
+    
+<div class="card-deck">
+
+    <% @documents.each do |document| %>
+        <div class="col-lg-4">
+            <div class="card">
+              <img class="card-img-top" src="#" alt="スダンダードコースのイメージ画像">
+                  <div class="card-body">
+                    <h4 class="card-title"><%= document.title %></h4>
+                    <p class="card-text"><%= document.goal %></p>
+                  
+                   <%= link_to '詳細', document_path(document.id) %>
+                  </div>
+            </div>
+        </div>  
+    <% end %>    
+</div>
+
+
+    

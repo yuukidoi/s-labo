@@ -1,6 +1,6 @@
 <header class="mb-4">
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">指導案ラボ</a>
+        <a class="navbar-brand offset-1" href="/">指導案ラボ</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -11,9 +11,14 @@
             <ul class="navbar-nav">
                
             <% if logged_in? %>
-                
-                <li class="nav-item"><a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a></li>
-                <li class="nav-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>                
+            
+            <li class="nav-item dropdown"></li>
+            　 <li class="navbar"><%= link_to '投稿', new_document_path %></li>
+               <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
+               <ul class ="dropdown-menu dropdown-menu-right">
+                    <li class="nav-item"><%= link_to 'プロフィール', user_path(current_user.id) %></li> 
+                    <li class="nav-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>       
+                </ul>
             <% else %>
                 <li class="nav-item"><%= link_to '登録', signup_path, class: 'nav-link' %></li>
                 <li class="nav-item"><%= link_to 'ログイン', login_path, class: 'nav-link' %></li>

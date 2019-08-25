@@ -1,0 +1,33 @@
+<div class="test document">
+    <h1>指導案</h1>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 offset-sm-3">
+        
+        <%= form_with(model: @document, local: true) do |f| %>
+        
+        <div class="form-group">
+            <%= f.label :title, '名前' %>
+            <%= f.text_field :title, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :goal, 'ゴールの姿' %>
+            <%= f.text_field :goal, class: 'form-control' %>
+        </div>
+    
+        <div class="form-group">
+            <%= f.label :explanation, '解説' %>
+            <%= f.text_field :explanation, class: 'form-control' %>
+        </div>
+        
+        <div class="form-group">
+            <%= f.label :preparation, '準備物' %>
+            <%= f.text_field :preparation, class: 'form-control' %>
+        </div>
+        
+        <%= f.submit '登録', class: 'btn btn-primary btn-block' %>
+    <% end %>
+    </div>
+</div>
