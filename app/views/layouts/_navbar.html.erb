@@ -5,7 +5,13 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         
-
+    <%= search_form_for @search do |f| %>
+        <%= f.label :title_cont, '指導案' %>
+        <%= f.search_field :title_cont %>
+        
+        <div class="actions"><%= f.submit "検索" %></div>
+    <% end %>
+    
         
         <div class="collpase navbar-collapse justify-content-end" id ="navbarSupportedContent">
             <ul class="navbar-nav">

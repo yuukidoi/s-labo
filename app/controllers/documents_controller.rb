@@ -3,6 +3,8 @@ class DocumentsController < ApplicationController
   before_action :correct_user, only: [:destroy]
   
   
+
+  
   def new
     @document = current_user.documents.new
   end
