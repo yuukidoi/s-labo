@@ -9,9 +9,14 @@ Rails.application.routes.draw do
   
   
   get 'signup', to: 'users#new'
-  resources :users
+  resources :users do
+    member do
+      get :likes
+    end 
+  end 
+  
   post 'edit', to: 'users#update'
   resources :documents
-  
+  resources :favorites, only: [:create, :destroy]
   
 end

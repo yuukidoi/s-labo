@@ -27,7 +27,7 @@ class DocumentsController < ApplicationController
 
   def destroy
   end
-end
+
 
 
 private
@@ -42,3 +42,5 @@ def correct_user
     redirect_to root_url
   end 
 end 
+
+end

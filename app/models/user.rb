@@ -10,4 +10,26 @@ class User < ApplicationRecord
     
     has_secure_password
     has_many :documents
+    
+    has_many :favorites
+    has_many :likes, through: :favorites, source: :document
+    
+    
+    
+    def like(document)
+        unless self.documents == document
+            self.favorites.find_or_create_by(document_id: document.id)
+        end 
+    end 
+    
+    def dislike(document)
+        favorite = self.favorites.find_by(document_id: document.id)
+        favorite.destroy if favorite
+    end 
+    
+    def favorite?(document)
+        self.likes.include?(document)
+    end 
+        
+    
 end

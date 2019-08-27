@@ -9,6 +9,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @documents = @user.documents.order(id: :desc).page(params[:page])
+    counts(@user)
+    @favorites = @user.likes.page(params[:page])
   end
 
   def new
@@ -45,11 +48,23 @@ class UsersController < ApplicationController
 
   def destroy
   end
-end
-
+  
+  def likes
+    @user = User.find(params[:id])
+    counts(@user)
+        @likes = @user.favorites.page(params[:page])
+     @favorites = @user.likes.page(params[:page])
+  end 
+  
+  
 
 private
 
 def user_params
   params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :image_cache)
 end 
+
+
+  
+  
+end

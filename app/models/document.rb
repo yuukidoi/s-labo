@@ -6,4 +6,7 @@ class Document < ApplicationRecord
   validates :explanation, length: { maximum: 250 }
   validates :preparation, length: { maximum: 150 }
   
+  has_many :favorites
+  has_many :users, through: :favorites, source: :user
+  
 end
