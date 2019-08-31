@@ -13,6 +13,8 @@ class User < ApplicationRecord
     
     has_many :favorites
     has_many :likes, through: :favorites, source: :document
+    has_many :comments
+    has_many :log, through: :coments, source: :document
     
     
     
@@ -30,6 +32,10 @@ class User < ApplicationRecord
     def favorite?(document)
         self.likes.include?(document)
     end 
+    
+    def comment(document)
+    end 
+    
         
     
 end

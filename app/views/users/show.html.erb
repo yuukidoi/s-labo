@@ -9,9 +9,16 @@
   <% end %>
         <h3 class="card-img"><%= @user.name %></h3>
       </div>
+<% if @user == current_user %>
       <div class="card-body">
          <%= link_to '編集', edit_user_path %>
       </div>
+      
+<% else %>
+      <div class="card-body">
+         <a>応援</a>
+      </div>
+<% end %>
     </div>
   </div>
 
@@ -20,6 +27,7 @@
        <li>名前</li>
        <li>自己紹介</li>
    </ul>
+   <%= @user.introduce %>
   </div>
   
   <div class="col-sm-12">
@@ -27,8 +35,8 @@
         
         
         
-      <li class="nav-item"><a href="#" class="nav-link">投稿</a></li>
-      
+      <li class="nav-item"><a href="<%= mylog_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(mylog_user_path(@user)) %>">投稿 <span class ="badge badge-secondary">
+      </span></a></li>
       
       <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">保存 <span class ="badge badge-secondary">
       <%= @count_likes %></span></a></li>

@@ -5,4 +5,22 @@
 <p><%= @document.explanation %></p>
 <p><%= @document.preparation %></p>
 
+
+<ul>
+  
+    <% if @document.file? %>
+    <%= @document.file.url %>
+    <% end %>
+    
+    
+   <%= link_to 'download',download_path(@document), :class => 'btn btn-default btn-xs' %>
+
+    
+
+</ul>
+
+
 <%= render 'favorites/favorite_button', document: @document %>
+
+
+<%= render 'comments/form', comment: @document.comments.build %>

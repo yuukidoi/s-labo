@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show]
+  before_action :require_user_logged_in, only: [:index, :show, :edit]
   
   
   
@@ -32,6 +32,9 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to root_path
+    end 
   end
 
   def update
@@ -56,12 +59,17 @@ class UsersController < ApplicationController
      @favorites = @user.likes.page(params[:page])
   end 
   
+  def mylog
+    @user = User.find(params[:id])
+    @mylog = @user.documents.page(params[:page])
+  end 
+  
   
 
 private
 
 def user_params
-  params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :image_cache)
+  params.require(:user).permit(:name, :email, :introduce, :password, :password_confirmation, :image, :image_cache)
 end 
 
 

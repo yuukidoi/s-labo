@@ -12,6 +12,17 @@ class DocumentsController < ApplicationController
   def show
     @document = Document.find(params[:id])
   end
+  
+  def download
+    @upload_file = Document.find(params[:id])
+    filepath = @upload_file.file.current_path
+    stat = File::stat(filepath)
+    send_file(filepath, :filename => @upload_file.file.url.gsub(/.*\//,''), :length => stat.size)
+    
+  end
+  
+  
+  
 
   def create
     @document = current_user.documents.build(document_params)
@@ -33,7 +44,7 @@ class DocumentsController < ApplicationController
 private
 
 def document_params
-  params.require(:document).permit(:title, :goal, :explanation, :preparation)
+  params.require(:document).permit(:title, :goal, :explanation, :preparation, :file)
 end 
 
 def correct_user
