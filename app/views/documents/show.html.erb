@@ -1,26 +1,48 @@
-<h1><%= @document.title %></h1>
+<div class="row">
 
-<h2><%= @document.goal %></h2>
-
-<p><%= @document.explanation %></p>
-<p><%= @document.preparation %></p>
-
-
-<ul>
-  
-    <% if @document.file? %>
-    <%= @document.file.url %>
-    <% end %>
+    <ul class="offset-1 col-lg-3">
+      
+        <% if @document.file? %>
+        <br>
+        <object data= "<%= @document.file.url %>" type="application/pdf" width="500px" height="500px"></object>
+        <%= link_to @document.title,download_path(@document), :class => 'btn btn-default btn-xs' %>
     
+        <% end %>
     
-   <%= link_to 'download',download_path(@document), :class => 'btn btn-default btn-xs' %>
-
+    </ul>
     
 
-</ul>
+    <div class="offset-lg-1 col-lg-6">
+        
+        <div class="box17">
+            <p><%= @document.goal %></p>
+        </div>
+        
+        <h2></h2>
+        <div class="box27">
+               <span class="box-title">目指す姿</span>
+                <p><%= @document.goal %></p>
+        </div>
 
+        <div class="box27">
+               <span class="box-title">どんな授業？</span>
+                <p><%= @document.explanation %></p>
+        </div>
+        
+        <div class="box27">
+               <span class="box-title">準備物</span>
+                <p><%= @document.preparation %></p>
+        </div>
+        
+    </div>
 
-<%= render 'favorites/favorite_button', document: @document %>
+</div>
 
+<% if logged_in? %>
+    <%= render 'favorites/favorite_button', document: @document %>
+    <%= render 'comments/form', comment: @document.comments.build %>
+    <%= render 'posts/post', posts: @posts %>
+<% else %>
+    <P>ログインすれば保存できます</P>
+<% end %>
 
-<%= render 'comments/form', comment: @document.comments.build %>

@@ -8,6 +8,7 @@ class Document < ApplicationRecord
   
    mount_uploader :file, UploadFileUploader
   
+  has_many :posts
   has_many :favorites
   has_many :users, through: :favorites, source: :user
   has_many :comments

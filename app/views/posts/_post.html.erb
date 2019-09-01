@@ -1,0 +1,25 @@
+         
+         
+        
+        
+<% if logged_in? %>
+    <div class="row">
+        <%= form_with(model: @post, local: true) do|f| %>
+        <div class="form-group">
+            <p><%=f.label :image, "画像をアップロード" %>
+            <%= f.file_field :image %></p>
+             <%= f.hidden_field :image_cache %>
+            <p><%= f.submit value: '投稿' %></p>
+        </div>
+        <% end %>
+    </div>
+<% end %>
+
+<% if @posts.any? %>
+    <% posts.each do |post| %>
+        <%= post.id %>
+        <%= image_tag post.image.url, :size =>'320x480' %>
+    <% end %>
+<% end %>
+
+       

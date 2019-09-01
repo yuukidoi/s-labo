@@ -1,5 +1,5 @@
 class DocumentsController < ApplicationController
-  before_action :require_user_logged_in
+  before_action :require_user_logged_in, only: [:new, :edit, :create, :destroy]
   before_action :correct_user, only: [:destroy]
   
   
@@ -7,10 +7,13 @@ class DocumentsController < ApplicationController
   
   def new
     @document = current_user.documents.new
+    @posts = @document.posts.new
   end
 
   def show
     @document = Document.find(params[:id])
+    @post = current_document.posts.build
+    @posts = current_document.posts.all
   end
   
   def download
@@ -26,8 +29,9 @@ class DocumentsController < ApplicationController
 
   def create
     @document = current_user.documents.build(document_params)
-    
+    @posts = @document.posts.build(post_params)
     if @document.save
+      @posts.save
       flash[:success] = "投稿しました"
       redirect_to root_url
     else
@@ -45,6 +49,10 @@ private
 
 def document_params
   params.require(:document).permit(:title, :goal, :explanation, :preparation, :file)
+end 
+
+def post_params
+  params.require(:document).permit(:image)
 end 
 
 def correct_user

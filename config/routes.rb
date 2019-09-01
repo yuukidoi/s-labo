@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   post 'edit', to: 'users#update'
   resources :documents
   get 'documents/download/:id' => 'documents#download', as: :download
+  
+  resources :posts, only: [:create, :destroy]
+  
  
   get  'upload', to: 'uploader#form'
   post 'uploader/upload'

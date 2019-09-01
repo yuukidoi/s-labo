@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_29_124720) do
+ActiveRecord::Schema.define(version: 2019_09_01_065159) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -43,6 +43,14 @@ ActiveRecord::Schema.define(version: 2019_08_29_124720) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "document_id"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["document_id"], name: "index_posts_on_document_id"
+  end
+
   create_table "upload_files", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "file"
@@ -65,4 +73,5 @@ ActiveRecord::Schema.define(version: 2019_08_29_124720) do
   add_foreign_key "documents", "users"
   add_foreign_key "favorites", "documents"
   add_foreign_key "favorites", "users"
+  add_foreign_key "posts", "documents"
 end

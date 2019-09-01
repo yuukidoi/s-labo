@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     
   def set_search
     @search = Document.ransack(params[:q])
-    @documents = @search.result
+    @results = @search.result
   end 
     
     private
@@ -21,3 +21,8 @@ class ApplicationController < ActionController::Base
       @count_likes = user.likes.count
     end 
 end
+
+
+def current_document
+        @current_document ||= Document.find_by(params[:id])
+end 

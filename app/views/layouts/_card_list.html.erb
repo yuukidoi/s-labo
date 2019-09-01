@@ -1,7 +1,9 @@
 <div class="card-deck">
+<% if @results.any? %>
+<% documents = @results %> 
 
     <% documents.each do |document| %>
-        <div class="col-lg-4">
+        <div class="col-lg-4" id="card">
             <div class="card">
               <img class="card-img-top" src="#" alt="スダンダードコースのイメージ画像">
                   <div class="card-body">
@@ -12,7 +14,25 @@
                   </div>
             </div>
         </div>  
-    <% end %>    
+    <% end %> 
+    
+<% else %>
+
+     <% documents.each do |document| %>
+        <div class="col-lg-4" id="card">
+            <div class="card">
+              <img class="card-img-top" src="#" alt="スダンダードコースのイメージ画像">
+                  <div class="card-body">
+                    <h4 class="card-title"><%= document.title %></h4>
+                    <p class="card-text"><%= document.goal %></p>
+                  
+                   <%= link_to '詳細', document_path(document.id) %>
+                  </div>
+            </div>
+        </div>  
+    <% end %> 
+    
+<% end %>
 </div>
 
 

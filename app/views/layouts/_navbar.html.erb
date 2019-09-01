@@ -1,15 +1,16 @@
-<header class="mb-4">
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <a class="navbar-brand offset-1" href="/">指導案ラボ</a>
+<header class="header">
+    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#333333">
+        <a class="navbar-brand offset-1" href="/" id="top">指導案Labo</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
         </button>
         
     <%= search_form_for @search do |f| %>
-        <%= f.label :title_cont, '指導案' %>
+      <div class="actions">
+        <%= f.label :title_cont, '指導案を探す', :class => 'search_name_here' %>
         <%= f.search_field :title_cont %>
         
-        <div class="actions"><%= f.submit "検索" %></div>
+      <%= f.submit "検索" , :class => 'search' %></div>
     <% end %>
     
         
@@ -19,11 +20,11 @@
             <% if logged_in? %>
             
             <li class="nav-item dropdown"></li>
-            　 <li class="navbar"><%= link_to '投稿', new_document_path %></li>
+            　 <li class="navbar"><%= link_to '投稿', new_document_path, :class=> 'add' %></li>
                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
                <ul class ="dropdown-menu dropdown-menu-right">
-                    <li class="nav-item"><%= link_to 'プロフィール', user_path(current_user.id) %></li> 
-                    <li class="nav-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>       
+                    <li class="nav-item" ><%= link_to 'プロフィール', user_path(current_user.id) %></li> 
+                    <li class="nav-item" id="drop"><%= link_to 'ログアウト', logout_path, method: :delete %></li>       
                 </ul>
             <% else %>
                 <li class="nav-item"><%= link_to '登録', signup_path, class: 'nav-link' %></li>
