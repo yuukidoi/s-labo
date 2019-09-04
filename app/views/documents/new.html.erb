@@ -1,42 +1,55 @@
 <div class="test document">
-    <h1>指導案</h1>
+    <h1>指導案を共有</h1>
 </div>
 
 <div class="row">
-    <div class="col-sm-6 offset-sm-3">
+    <div class="offset-1 col-lg-4">
         
         <%= form_with(model: @document, local: true) do |f| %>
-        
-        <div class="form-group">
-            <%= f.label :title, '名前' %>
-            <%= f.text_field :title, class: 'form-control' %>
+        <div class="file">
+             <div class="form-group">
+                <%= f.label "指導案をアップロード" %>
+                <%= f.file_field :file,　id: :post_file %>
+            </div>
+          
+            <%= image_tag @document.file.url, id: :img_prev if @document.file? %>
+            
         </div>
+    </div>    
+        
+    <div class="col-lg-6">
+        <div class="text">
+             <div class="form-group">
+                <%= f.label :title, '名前' %>
+                <%= f.text_field :title, class: 'form-control' %>
+            </div>
 
-        <div class="form-group">
-            <%= f.label :goal, 'ゴールの姿' %>
-            <%= f.text_field :goal, class: 'form-control' %>
-        </div>
-    
-        <div class="form-group">
-            <%= f.label :explanation, '解説' %>
-            <%= f.text_field :explanation, class: 'form-control' %>
-        </div>
+            <div class="form-group">
+                <%= f.label :goal, 'ゴールの姿' %>
+                <%= f.text_field :goal, class: 'form-control' %>
+            </div>
         
-        <div class="form-group">
-            <%= f.label :preparation, '準備物' %>
-            <%= f.text_field :preparation, class: 'form-control' %>
-        </div>
+            <div class="form-group">
+                <%= f.label :explanation, '解説' %>
+                <%= f.text_field :explanation, class: 'form-control' %>
+            </div>
+            
+            <div class="form-group">
+                <%= f.label :preparation, '準備物' %>
+                <%= f.text_field :preparation, class: 'form-control' %>
+            </div>
         
+            <div class="form-group">
+                <%= f.label :tag_list, 'タグ' %>
+                <%= f.text_field :tag_list, value: @document.tag_list.join(', '), class: 'form-control' %>
+            </div>
+
+                <%= f.submit '登録', class: 'btn btn-primary btn-block' %>
         
-        <div class="form-group">
-           <%= f.label "指導案をアップロード" %><br><%= f.file_field :file %>
-        </div>
-        
-        
-     
-        
-        <%= f.submit '登録', class: 'btn btn-primary btn-block' %>
-        
+            
+            </div>
+    </div>    
+       
 
                     
           <% end %>

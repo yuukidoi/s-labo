@@ -7,13 +7,13 @@ class DocumentsController < ApplicationController
   
   def new
     @document = current_user.documents.new
-    @posts = @document.posts.new
+    #@posts = @document.posts.new
   end
 
   def show
     @document = Document.find(params[:id])
-    @post = current_document.posts.build
-    @posts = current_document.posts.all
+    @post = @document.posts.new
+    #@posts = @document.posts.first
   end
   
   def download
@@ -29,13 +29,13 @@ class DocumentsController < ApplicationController
 
   def create
     @document = current_user.documents.build(document_params)
-    @posts = @document.posts.build(post_params)
+    #@posts = @document.posts.build(post_params)
     if @document.save
-      @posts.save
+      #@posts.save
       flash[:success] = "投稿しました"
       redirect_to root_url
     else
-      flassh[:danger] = "失敗"
+      flash[:danger] = "失敗"
       render '/documents/new'
     end 
   end
@@ -48,11 +48,11 @@ class DocumentsController < ApplicationController
 private
 
 def document_params
-  params.require(:document).permit(:title, :goal, :explanation, :preparation, :file)
+  params.require(:document).permit(:title, :goal, :explanation, :preparation, :file, :tag_list)
 end 
 
 def post_params
-  params.require(:document).permit(:image)
+  params.require(:post).permit(:image)
 end 
 
 def correct_user

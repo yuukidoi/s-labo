@@ -24,7 +24,16 @@
         <div class="form-group">
             <%= f.label :image, '写真' %>
             
-            <%= f.file_field :image %>
+    <div id="img_field" onClick="$('#file').click()" >
+              <p>クリックで画像変更</p>
+        <% if @user.image.url.present? %>
+          <%= image_tag(@user.image.url) %>
+        <% else %>
+          <i class="fas fa-image"></i><i class="fas fa-file-upload add"></i>
+        <% end %>
+ 
+    </div>
+            <%= f.file_field :image, class: "image", style: "display:none;", id: "file" %>
             <%= f.hidden_field :image_cache %>
         </div>
 

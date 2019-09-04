@@ -7,6 +7,8 @@ class Document < ApplicationRecord
   validates :preparation, length: { maximum: 150 }
   
    mount_uploader :file, UploadFileUploader
+   acts_as_taggable
+
   
   has_many :posts
   has_many :favorites

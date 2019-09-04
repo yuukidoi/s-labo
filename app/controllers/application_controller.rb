@@ -6,7 +6,9 @@ class ApplicationController < ActionController::Base
     
   def set_search
     @search = Document.ransack(params[:q])
-    @results = @search.result
+    @results = @search.result 
+   
+
   end 
     
     private

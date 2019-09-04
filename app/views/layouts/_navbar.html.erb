@@ -7,8 +7,8 @@
         
     <%= search_form_for @search do |f| %>
       <div class="actions">
-        <%= f.label :title_cont, '指導案を探す', :class => 'search_name_here' %>
-        <%= f.search_field :title_cont %>
+        <%= f.label :title_or_goal__or_preparatioin_or_explanation_cont_or_tags_name, '指導案を探す', :class => 'search_name_here' %>
+        <%= f.search_field :title_or_goal_or_preparation_or_explanation_or_tags_name_cont %>
         
       <%= f.submit "検索" , :class => 'search' %></div>
     <% end %>

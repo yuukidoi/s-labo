@@ -33,6 +33,10 @@
                <span class="box-title">準備物</span>
                 <p><%= @document.preparation %></p>
         </div>
+        <div class="box27">
+               <span class="box-title">タグ</span>
+                <p><%= render 'documents/tag_list' %></p>
+        </div>
         
     </div>
 
@@ -41,7 +45,7 @@
 <% if logged_in? %>
     <%= render 'favorites/favorite_button', document: @document %>
     <%= render 'comments/form', comment: @document.comments.build %>
-    <%= render 'posts/post', posts: @posts %>
+    <%= render 'posts/post', posts: @document.posts.find(params[:id]) %>
 <% else %>
     <P>ログインすれば保存できます</P>
 <% end %>

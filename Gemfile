@@ -60,3 +60,5 @@ gem 'ransack'
 
 gem 'carrierwave'
 gem 'rmagick'
+
+gem 'acts-as-taggable-on', '~>6.0'

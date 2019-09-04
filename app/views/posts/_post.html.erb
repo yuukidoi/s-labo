@@ -15,10 +15,11 @@
     </div>
 <% end %>
 
-<% if @posts.any? %>
+<% if posts.any? %>
     <% posts.each do |post| %>
-        <%= post.id %>
-        <%= image_tag post.image.url, :size =>'320x480' %>
+       
+        <%= post.image.url %>
+        <%= image_tag post.image.thumb.url, :size =>'320x480' %>
     <% end %>
 <% end %>
 
