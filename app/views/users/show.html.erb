@@ -3,10 +3,10 @@
     <div class="card">
       <div class="card-header">
           <% if @user.image? %>
-    <%= image_tag @user.image.thumb.url %>
-  <% else %>
-    <%= image_tag 's512_f_object_92_2bg.jpg' %>
-  <% end %>
+            <%= image_tag @user.image.thumb.url %>
+          <% else %>
+            <%= image_tag 's512_f_object_92_2bg.jpg' %>
+          <% end %>
         <h3 class="card-img"><%= @user.name %></h3>
       </div>
 <% if @user == current_user %>

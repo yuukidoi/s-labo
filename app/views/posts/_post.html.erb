@@ -2,25 +2,24 @@
          
         
         
-<% if logged_in? %>
-    <div class="row">
-        <%= form_with(model: @post, local: true) do|f| %>
-        <div class="form-group">
-            <p><%=f.label :image, "画像をアップロード" %>
-            <%= f.file_field :image %></p>
-             <%= f.hidden_field :image_cache %>
-            <p><%= f.submit value: '投稿' %></p>
-        </div>
-        <% end %>
-    </div>
-<% end %>
+
 
 <% if posts.any? %>
+  <div class="row">
     <% posts.each do |post| %>
-       
-        <%= post.image.url %>
-        <%= image_tag post.image.thumb.url, :size =>'320x480' %>
+    　
+         <div class="col-lg-3" id="card">
+            <div class="card">
+                <div class="card-header">
+                     <%= image_tag post.image.url, :size =>'310x300' if post.image.url %>
+                </div>
+                <div class="card-body">
+                    <p><%= post.image_comment %></p>
+                </div>
+            </div>
+        </div> 
     <% end %>
+  </div>
 <% end %>
 
        

@@ -5,10 +5,13 @@
         <% if @document.file? %>
         <br>
         <object data= "<%= @document.file.url %>" type="application/pdf" width="500px" height="500px"></object>
-        <%= link_to @document.title,download_path(@document), :class => 'btn btn-default btn-xs' %>
+       
     
         <% end %>
-    
+            <div class="box20">
+            <p><%= @document.content %>    
+            <%= @document.school %> <%= @document.grade %> <%= @document.subject %></P>
+        </div>
     </ul>
     
 
@@ -17,7 +20,7 @@
         <div class="box17">
             <p><%= @document.goal %></p>
         </div>
-        
+
         <h2></h2>
         <div class="box27">
                <span class="box-title">目指す姿</span>
@@ -41,11 +44,17 @@
     </div>
 
 </div>
+<div class ="photo">
+    <% if @document.posts.any? %>
+        <%= render 'posts/post', {posts: @document.posts.all, document: @document} %>
+    <% end %>
+</div>
+
 
 <% if logged_in? %>
     <%= render 'favorites/favorite_button', document: @document %>
     <%= render 'comments/form', comment: @document.comments.build %>
-    <%= render 'posts/post', posts: @document.posts.find(params[:id]) %>
+    
 <% else %>
     <P>ログインすれば保存できます</P>
 <% end %>

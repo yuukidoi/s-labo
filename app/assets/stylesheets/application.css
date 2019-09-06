@@ -59,3 +59,7 @@ a#top {
 #card{
     margin-bottom: 10px;
 }
+
+#image_user_edit{
+    size: 50%;
+}

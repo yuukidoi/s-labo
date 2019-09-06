@@ -3,12 +3,28 @@
      <% documents.each do |document| %>
         <div class="col-lg-4" id="card">
             <div class="card">
-              <img class="card-img-top" src="#" alt="スダンダードコースのイメージ画像">
+                
+             
                   <div class="card-body">
-                    <h4 class="card-title"><%= document.title %></h4>
-                    <p class="card-text"><%= document.goal %></p>
-                  
-                   <%= link_to '詳細', document_path(document.id) %>
+                      <div class="row">
+                      <div class="col-lg-3">
+                        <% if document.posts.any? %>
+                                <%= image_tag document.posts.first.image.thumb.url, :size =>'180x180' %>
+                         <% else %>
+                            <%= image_tag 's512_f_object_92_2bg.jpg',:size =>'180x180' %>　<!--画像ないときの画像を決める -->
+                         <% end %>
+                      </div>
+                      <div class="offset-lg-2 col-lg-7">
+                            <h4 class="card-title"><%= document.title %></h4>
+
+                            <p class="card-text"><%= document.goal %></p>
+                             <%= document[:created_at].strftime("%Y-%m-%d") %>
+                      </div>
+                      </div>
+                   <p>投稿者　
+                   <%= document.user.name %> 
+                   　　　　　　<%= link_to '指導案を見る', document_path(document.id) %>
+                    </p>
                   </div>
             </div>
         </div>  

@@ -8,13 +8,43 @@
         <%= form_with(model: @document, local: true) do |f| %>
         <div class="file">
              <div class="form-group">
-                <%= f.label "指導案をアップロード" %>
+                <%= f.label :file, "指導案をアップロード" %>
+                
+                 <% if @document.file.url.present? %>
+                      <object data= "<%= @document.file.url %>" type="application/pdf" width="500px" height="500px"></object>
+                <% else %>
+                      <i class="fas fa-image"></i><i class="fas fa-file-upload add"></i>
+                <% end %>
+                
+                
+                
                 <%= f.file_field :file,　id: :post_file %>
             </div>
           
             <%= image_tag @document.file.url, id: :img_prev if @document.file? %>
             
         </div>
+        <div class="info">
+            <div class="form-group">
+                <%= f.label :school, '校種' %>
+                <%= f.select :school, [["小学校","小学校"],["中学校","中学校"],["高校","高校"],["その他","その他"]],:prompt => "校種選択" %>
+            </div>
+            <div class="form-group">
+                    <%= f.label :grade, '学年' %>
+                <%= f.select :grade, [["1年","1年"],["2年","2年"],["3年","3年"],["4年","4年"],["5年","5年"],["6年","6年"]],:prompt => "学年" %>
+            </div>
+            <div class="form-group">
+                    <%= f.label :subject, '教科' %>
+                <%= f.select :subject, [["国語","国語"],["算数・数学","算数・数学"],["社会","社会"],["理科","理科"],["英語","英語"],
+                                        ["体育","体育"],["音楽","音楽"],["図工","図工"],["道徳","道徳"],["その他","その他"]],:prompt => "教科" %>
+            </div>
+            <div class="form-group">
+                <%= f.label :content, '単元' %>
+                <%= f.text_field :content, class: 'form-control' %>
+            </div>
+        </div>
+        
+        
     </div>    
         
     <div class="col-lg-6">
@@ -43,14 +73,61 @@
                 <%= f.label :tag_list, 'タグ' %>
                 <%= f.text_field :tag_list, value: @document.tag_list.join(', '), class: 'form-control' %>
             </div>
-
-                <%= f.submit '登録', class: 'btn btn-primary btn-block' %>
-        
             
-            </div>
+            
+        </div>
     </div>    
-       
-
+     <div class="form-group">
+        <%= f.fields_for :posts do |fp| %>
+        　　<div class="card">
+                <div class="card-header">
+                    <%= fp.file_field :image %>
+                    <%= f.hidden_field :image_cache %>
+                    <%= f.hidden_field :document_id, value: @document.id %>
+                </div>
+            <div class="card-body">
+                    <%= fp.label :image_comment %>
+                    <%= fp.text_field :image_comment, class: 'form-control' %>
+            </div>
+        </div>
+    　  <% end %>
+    </div>  
+     <div class="form-group">
+        <%= f.fields_for :posts do |fp| %>
+        　　<div class="card">
+                <div class="card-header">
+                    <%= fp.file_field :image %>
+                    <%= f.hidden_field :image_cache %>
+                    <%= f.hidden_field :document_id, value: @document.id %>
+                </div>
+            <div class="card-body">
+                    <%= fp.label :image_comment %>
+                    <%= fp.text_field :image_comment, class: 'form-control' %>
+            </div>
+        </div>
+    　  <% end %>
+    </div>  
+     <div class="form-group">
+        <%= f.fields_for :posts do |fp| %>
+        　　<div class="card">
+                <div class="card-header">
+                    <%= fp.file_field :image %>
+                    <%= f.hidden_field :image_cache %>
+                    <%= f.hidden_field :document_id, value: @document.id %>
+                </div>
+            <div class="card-body">
+                    <%= fp.label :image_comment %>
+                    <%= fp.text_field :image_comment, class: 'form-control' %>
+            </div>
+        </div>
+    　  <% end %>
+    </div>  
+    
+    
+    
+    
+    
+ <%= f.submit '登録', class: 'btn btn-primary btn-block' %>
                     
           <% end %>
     </div>

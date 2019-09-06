@@ -7,12 +7,13 @@ class DocumentsController < ApplicationController
   
   def new
     @document = current_user.documents.new
-    #@posts = @document.posts.new
+    post = @document.posts.build
+    #post.image.build
   end
 
   def show
     @document = Document.find(params[:id])
-    @post = @document.posts.new
+    @post = @document.posts.all
     #@posts = @document.posts.first
   end
   
@@ -47,19 +48,19 @@ class DocumentsController < ApplicationController
 
 private
 
-def document_params
-  params.require(:document).permit(:title, :goal, :explanation, :preparation, :file, :tag_list)
-end 
-
-def post_params
-  params.require(:post).permit(:image)
-end 
-
-def correct_user
-  @document = current_user.documents.find_by(id: params[:id])
-  unless @document
-    redirect_to root_url
+  def document_params
+    params.require(:document).permit(:title, :goal, :explanation, :preparation, :school, :grade, :subject, :content, :file, :tag_list, posts_attributes: [:image, :image_cache, :image_comment])
   end 
-end 
+  
+  def post_params
+    params.require(:post).permit(:image)
+  end 
+  
+  def correct_user
+    @document = current_user.documents.find_by(id: params[:id])
+    unless @document
+      redirect_to root_url
+    end 
+  end 
 
 end

@@ -5,7 +5,8 @@ class PostsController < ApplicationController
  
   
   def create
-    @posts= current_document.posts.build(post_params)
+    @document = Document.find(params[:post][:document_id])
+    @posts= @document.posts.build(post_params)
     if @posts.save
       flash[:success]= 'savephoto'
       redirect_to root_url
@@ -24,7 +25,7 @@ end
 private
 
 def post_params
-  params.require(:post).permit(:image, :image_cache)
+  params.require(:post).permit(:image, :image_cache, :image_comment)
 end 
 
 
