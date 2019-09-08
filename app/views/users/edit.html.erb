@@ -1,29 +1,33 @@
-<div class="sign up">
+<div class="sign up offset-lg-1">
     <h1>プロフィール編集</h1>
 </div>
 
-<div class="row">
+
            
     <%= form_with(model: @user, local: true) do |f| %>
+<div class="row">
         <div class="offset-lg-1 col-lg-4">
         
             <div class="form-group">
-                <%= f.label :image, '写真' %>
+                <div class="card">
+                    <div class="card-header">
+                        <%= f.label :image, 'クリックで画像変更' %>
                 
-                    <div id="img_field" onClick="$('#file').click()" >
-                              <p>クリックで画像変更</p>
+                        <div id="img_field" onClick="$('#file').click()" >
                         <% if @user.image.url.present? %>
-                          <%= image_tag(@user.image.url) %>
+                          <%= image_tag @user.image.thumb.url, :size =>'180x150' %>
                         <% else %>
-                          <i class="fas fa-image"></i><i class="fas fa-file-upload add"></i>
+                          <%= image_tag 'no_image.jpg', :size =>'180x150' %>
                         <% end %>
+                        </div>
+                        <%= f.file_field :image, class: "image", style: "display:none;", id: "file" %>
+                        <%= f.hidden_field :image_cache %>
                     </div>
-                <%= f.file_field :image, class: "image", style: "display:none;", id: "file" %>
-                <%= f.hidden_field :image_cache %>
+                </div>
             </div>
         </div>
  
-        <div class="col-lg-6 offset-lg-1">   
+        <div class="col-lg-6">   
             <div class="form-group">
                 <%= f.label :name, '名前' %>
                 <%= f.text_field :name, class: 'form-control' %>

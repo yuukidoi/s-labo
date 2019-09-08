@@ -4,21 +4,35 @@
       
         <% if @document.file? %>
         <br>
-        <object data= "<%= @document.file.url %>" type="application/pdf" width="500px" height="500px"></object>
-       
+         <object data= "<%= @document.file.url %>" type="application/pdf" width="500px" height="500px"></object>
+       <% else %>
+         <%= image_tag 'no_image.jpg', :size =>'500x500'%>
     
         <% end %>
+     
             <div class="box20">
-            <p><%= @document.content %>    
-            <%= @document.school %> <%= @document.grade %> <%= @document.subject %></P>
+                <p><%= @document.content %>    
+                <%= @document.school %> <%= @document.grade %> <%= @document.subject %></P>
+            </div>
+        <div class="row">
+            <div class="offset-lg-1">
+                
+                <% if logged_in? %>
+                    <%= render 'favorites/favorite_button', document: @document %>
+                <% end %>
+              
+            </div>
+            <div class="link-name offset-1">
+                  <%= link_to  @document.user.name, user_path(@document.user.id), id: 'link_name' %>
+            </div>
         </div>
     </ul>
     
 
     <div class="offset-lg-1 col-lg-6">
         
-        <div class="box17">
-            <p><%= @document.goal %></p>
+        <div class="goal">
+            <h1 id="goal"><%= @document.title %></h1>
         </div>
 
         <h2></h2>
@@ -29,7 +43,7 @@
 
         <div class="box27">
                <span class="box-title">どんな授業？</span>
-                <p><%= @document.explanation %></p>
+                <%= simple_format(@document.explanation) %>
         </div>
         
         <div class="box27">
@@ -38,24 +52,28 @@
         </div>
         <div class="box27">
                <span class="box-title">タグ</span>
-                <p><%= render 'documents/tag_list' %></p>
+                <p><%= render 'documents/tag_list', document: @document %></p>
         </div>
-        
+        <% if current_user == @document.user %>
+            <%= link_to '指導案を削除する', @document, method: :delete, data: {confirm: '本当に削除してよろしいですか' }, class: "badge badge-primary" %>
+        <% end %>
     </div>
 
 </div>
-<div class ="photo">
-    <% if @document.posts.any? %>
-        <%= render 'posts/post', {posts: @document.posts.all, document: @document} %>
+
+    <div class ="photo">
+        <% if @document.posts.any? %>
+            <%= render 'posts/post', {posts: @document.posts.all, document: @document} %>
+        
+            
+        <% end %>
+    </div>
+<div class="offset-lg-1 col-lg-2">
+
+    <% if logged_in? %>
+        <%= render 'comments/form', comment: @document.comments.build %>
+    <% else %>
+        <P>ログインすれば保存できます</P>
     <% end %>
 </div>
-
-
-<% if logged_in? %>
-    <%= render 'favorites/favorite_button', document: @document %>
-    <%= render 'comments/form', comment: @document.comments.build %>
-    
-<% else %>
-    <P>ログインすれば保存できます</P>
-<% end %>
 

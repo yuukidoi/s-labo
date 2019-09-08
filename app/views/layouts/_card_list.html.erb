@@ -1,28 +1,30 @@
-<div class="card-deck">
+<div class="card-deck", id="card_list">
 
      <% documents.each do |document| %>
         <div class="col-lg-4" id="card">
-            <div class="card">
+            <div class="card bg-light">
                 
              
                   <div class="card-body">
                       <div class="row">
                       <div class="col-lg-3">
-                        <% if document.posts.any? %>
-                                <%= image_tag document.posts.first.image.thumb.url, :size =>'180x180' %>
+                        <% if document.posts.first.present? %>
+                            <%= image_tag 's512_f_object_92_2bg.jpg', :size =>'180x180' %>
                          <% else %>
-                            <%= image_tag 's512_f_object_92_2bg.jpg',:size =>'180x180' %>　<!--画像ないときの画像を決める -->
+                            <%= image_tag 's512_f_object_92_2bg.jpg',:size =>'180x180' %>　<!--画像ないときの画像を決める   保存用　document.posts.first.image.thumb.url-->
                          <% end %>
                       </div>
                       <div class="offset-lg-2 col-lg-7">
-                            <h4 class="card-title"><%= document.title %></h4>
+                            <h4 class="card-title"><%= document.title.truncate(18) %></h4>
 
-                            <p class="card-text"><%= document.goal %></p>
-                             <%= document[:created_at].strftime("%Y-%m-%d") %>
+                            <p class="card-text"><%= document.goal.truncate(30) %></p>
+                        <!---    <p class="card-text"><%#= document.subject %>：<%#= document.content %></p> --->
+                            <p><%= render 'documents/tag_list', document: document %></p>
+                             
                       </div>
                       </div>
                    <p>投稿者　
-                   <%= document.user.name %> 
+                   <%= document.user.name %> <%= document[:created_at].strftime("%Y-%m-%d") %>
                    　　　　　　<%= link_to '指導案を見る', document_path(document.id) %>
                     </p>
                   </div>

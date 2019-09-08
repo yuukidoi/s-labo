@@ -25,7 +25,7 @@ end
 private
 
 def post_params
-  params.require(:post).permit(:image, :image_cache, :image_comment)
+  params.require(:post).permit(:image, :image_cache,:image_comment)
 end 
 
 

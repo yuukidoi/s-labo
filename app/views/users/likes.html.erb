@@ -1,29 +1,8 @@
-<div class="row">
-  <div class="col-sm-4">
-    <div class="card">
-      <div class="card-header">
-          <% if @user.image? %>
-    <%= image_tag @user.image.thumb.url %>
-  <% else %>
-    <%= image_tag 's512_f_object_92_2bg.jpg' %>
-  <% end %>
-        <h3 class="card-img"><%= @user.name %></h3>
-      </div>
-      <div class="card-body">
-         <%= link_to '編集', edit_user_path %>
-      </div>
-    </div>
-  </div>
+<%= render 'users/user_info', user: @user %>
 
-  <div class="col-sm-8">
-   <ul class='profile'>
-       <li>名前</li>
-       <li>自己紹介</li>
-   </ul>
-  </div>
-  
-  
-  
+
+
+
   <div class="col-sm-12">
     <ul class="nav nav-tabs nav-justified mb-3">
         
@@ -43,24 +22,6 @@
     
     <%= render 'layouts/card_list', documents: @favorites %>
 
-    <% @favorites.each do |document| %>
-
-            
-            <div class="media-body">
-                <div>
-                    <%= link_to document.user.name, user_path(document.user) %><span class="text-muted">postsd at <%= document.created_at %></span>
-                </div>
-                <div>
-                    <p><%= document.title %></p>
-                </div>
-                <% if current_user == document.user %>
-                    <%= link_to "Delete", document, method: :delete, data: {confirm: "you sure?"},class: 'btn btn-danger btn-sm' %>
-                <% else %>
-                    <%= render 'favorites/favorite_button', document: document %>
-                <% end %>
-            </div>
-
-    <% end %>
-
+    
   </div>
 </div>

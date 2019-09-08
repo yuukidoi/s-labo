@@ -9,7 +9,56 @@
     justify-content: space-between;
 }
 
+.form_size1{
+    width: 100%;
+  height: 20vh !important;
+}
 
+object{
+    background-color: #ecf0f1;
+}
+
+.FileBtn {
+    border: 3px solid;
+    display: inline-block;
+    padding: 2px 1em;
+    position: relative;
+}
+.FileBtn input[type="file"] {
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.info{
+    margin-top: 60px;
+    margin-left: 20px;
+}
+
+
+#new_image_document{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#link_name{
+    color: #2c3e50;
+}
+
+#goal{
+    color: #FFFFEE;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+    
+}
+
+.form-group{
+    font-size: 18px;
+}
 
 .box20 {
     position: relative;
@@ -18,6 +67,7 @@
     top: 0;
     background: #efefef;
     display: inline-block;
+
 }
 .box20:before, .box20:after{ 
     position: absolute;
@@ -78,6 +128,8 @@
     margin: 2em 0;
     padding: 0.5em 1em;
     border: solid 3px #62c1ce;
+        background-color:#ecf0f1;
+
 }
 .box27 .box-title {
     position: absolute;
@@ -96,4 +148,8 @@
 .box27 p {
     margin: 0; 
     padding: 0;
+}
+
+.card-title{
+    border-bottom: solid 3px #62c1ce;
 }

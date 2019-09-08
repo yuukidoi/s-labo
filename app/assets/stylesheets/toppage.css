@@ -32,3 +32,8 @@ h2#top_title{
     margin-left:130px;
     text-shadow: -1.5px 1px 0 #000
 }
+
+.pagination{
+    font-size: 60px;
+    color: #ecf0f1;
+}

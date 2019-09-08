@@ -8,7 +8,7 @@ class DocumentsController < ApplicationController
   def new
     @document = current_user.documents.new
     post = @document.posts.build
-    #post.image.build
+  
   end
 
   def show
@@ -42,6 +42,11 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
+    @document = Document.find(params[:id])
+    @document.destroy
+    
+    flash[:success] = "削除しました"
+    redirect_to user_path(@document.user.id)
   end
 
 

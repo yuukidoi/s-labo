@@ -1,0 +1,13 @@
+input[type="introduce"] {
+        width: 300px;
+        height: 400px;
+    }
+
+input[type="explanation"] {
+        width: 300px;
+        height: 400px;
+    }
+
+#user_info{
+        margin-bottom: 10px;
+}

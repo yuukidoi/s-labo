@@ -1,4 +1,4 @@
-<div class="test document">
+<div class="offset-lg-1 test document">
     <h1>指導案を共有</h1>
 </div>
 
@@ -8,40 +8,22 @@
         <%= form_with(model: @document, local: true) do |f| %>
         <div class="file">
              <div class="form-group">
-                <%= f.label :file, "指導案をアップロード" %>
+                <%= f.label :file, "指導案のPDFをアップロード" %>
                 
-                 <% if @document.file.url.present? %>
-                      <object data= "<%= @document.file.url %>" type="application/pdf" width="500px" height="500px"></object>
-                <% else %>
-                      <i class="fas fa-image"></i><i class="fas fa-file-upload add"></i>
-                <% end %>
-                
-                
-                
-                <%= f.file_field :file,　id: :post_file %>
+                <%= f.file_field :file, class: "pdf_post", value: 'PDF' %>
+        
+                <object data= "" type="application/pdf" width="500px" height="500px"></object>
             </div>
           
-            <%= image_tag @document.file.url, id: :img_prev if @document.file? %>
             
+           
         </div>
-        <div class="info">
-            <div class="form-group">
-                <%= f.label :school, '校種' %>
-                <%= f.select :school, [["小学校","小学校"],["中学校","中学校"],["高校","高校"],["その他","その他"]],:prompt => "校種選択" %>
-            </div>
-            <div class="form-group">
-                    <%= f.label :grade, '学年' %>
-                <%= f.select :grade, [["1年","1年"],["2年","2年"],["3年","3年"],["4年","4年"],["5年","5年"],["6年","6年"]],:prompt => "学年" %>
-            </div>
-            <div class="form-group">
-                    <%= f.label :subject, '教科' %>
-                <%= f.select :subject, [["国語","国語"],["算数・数学","算数・数学"],["社会","社会"],["理科","理科"],["英語","英語"],
-                                        ["体育","体育"],["音楽","音楽"],["図工","図工"],["道徳","道徳"],["その他","その他"]],:prompt => "教科" %>
-            </div>
+        <div class="info_content">
             <div class="form-group">
                 <%= f.label :content, '単元' %>
                 <%= f.text_field :content, class: 'form-control' %>
             </div>
+            
         </div>
         
         
@@ -50,7 +32,7 @@
     <div class="col-lg-6">
         <div class="text">
              <div class="form-group">
-                <%= f.label :title, '名前' %>
+                <%= f.label :title, '指導案タイトル' %>
                 <%= f.text_field :title, class: 'form-control' %>
             </div>
 
@@ -61,7 +43,7 @@
         
             <div class="form-group">
                 <%= f.label :explanation, '解説' %>
-                <%= f.text_field :explanation, class: 'form-control' %>
+                <%= f.text_area :explanation, rows: 7, class: 'form-control' %>
             </div>
             
             <div class="form-group">
@@ -74,15 +56,49 @@
                 <%= f.text_field :tag_list, value: @document.tag_list.join(', '), class: 'form-control' %>
             </div>
             
-            
+            <div class="info">
+                <div class="row">
+                    <div class="form-group">
+                        <%= f.label :school, '校種' %>
+                        <%= f.select :school, [["小学校","小学校"],["中学校","中学校"],["高校","高校"],["その他","その他"]],:prompt => "校種選択" %>
+                    </div>
+                    <div class="form-group">
+                            <%= f.label :grade, '学年' %>
+                        <%= f.select :grade, [["1年","1年"],["2年","2年"],["3年","3年"],["4年","4年"],["5年","5年"],["6年","6年"]],:prompt => "学年" %>
+                    </div>
+                    <div class="form-group">
+                            <%= f.label :subject, '教科' %>
+                        <%= f.select :subject, [["国語","国語"],["算数・数学","算数・数学"],["社会","社会"],["理科","理科"],["英語","英語"],
+                                                ["体育","体育"],["音楽","音楽"],["図工","図工"],["道徳","道徳"],["その他","その他"]],:prompt => "教科" %>
+                    </div>
+                </div>
+       
+            </div>
         </div>
     </div>    
+<div class="offset-lg-1">
+    <div class="row">
      <div class="form-group">
         <%= f.fields_for :posts do |fp| %>
-        　　<div class="card">
+        　　<div class="card", id="new_image_document">
                 <div class="card-header">
                     <%= fp.file_field :image %>
                     <%= f.hidden_field :image_cache %>
+                    <%= f.hidden_field :document_id, value: @document.id %>
+                </div>
+            <div class="card-body">
+                    <%= fp.label :image_comment, 'キャッチ画像になります' %>
+                    <%= fp.text_field :image_comment, class: 'form-control' %>
+            </div>
+        </div>
+    　  <% end %>
+    </div>  
+     <div class="form-group">
+        <%= f.fields_for :posts do |fp| %>
+        　　<div class="card", id="new_image_document">
+                <div class="card-header">
+                    <%= fp.file_field :image %>
+                            <%= f.hidden_field :image_cache %>
                     <%= f.hidden_field :document_id, value: @document.id %>
                 </div>
             <div class="card-body">
@@ -94,10 +110,10 @@
     </div>  
      <div class="form-group">
         <%= f.fields_for :posts do |fp| %>
-        　　<div class="card">
+        　　<div class="card", id="new_image_document">
                 <div class="card-header">
                     <%= fp.file_field :image %>
-                    <%= f.hidden_field :image_cache %>
+                       <%= f.hidden_field :image_cache %>    
                     <%= f.hidden_field :document_id, value: @document.id %>
                 </div>
             <div class="card-body">
@@ -106,23 +122,9 @@
             </div>
         </div>
     　  <% end %>
-    </div>  
-     <div class="form-group">
-        <%= f.fields_for :posts do |fp| %>
-        　　<div class="card">
-                <div class="card-header">
-                    <%= fp.file_field :image %>
-                    <%= f.hidden_field :image_cache %>
-                    <%= f.hidden_field :document_id, value: @document.id %>
-                </div>
-            <div class="card-body">
-                    <%= fp.label :image_comment %>
-                    <%= fp.text_field :image_comment, class: 'form-control' %>
-            </div>
-        </div>
-    　  <% end %>
-    </div>  
-    
+    </div> 
+  </div>
+</div>    
     
     
     
