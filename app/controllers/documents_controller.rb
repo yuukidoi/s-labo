@@ -36,8 +36,9 @@ class DocumentsController < ApplicationController
       flash[:success] = "投稿しました"
       redirect_to root_url
     else
+      @document = current_user.documents.build(document_params)
       flash[:danger] = "失敗"
-      render '/documents/new'
+      render :new
     end 
   end
 

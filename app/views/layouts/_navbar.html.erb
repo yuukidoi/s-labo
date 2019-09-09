@@ -20,7 +20,7 @@
             <% if logged_in? %>
             
             <li class="nav-item dropdown"></li>
-            　 <li class="navbar"><%= link_to '投稿', new_document_path, :class=> 'add' %></li>
+            　 <li class="navbar"><%= link_to '投稿', new_document_path, :class=> 'add', data: {"turbolinks" => false} %></li>
                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
                <ul class ="dropdown-menu dropdown-menu-right">
                     <li class="nav-item" ><%= link_to 'プロフィール', user_path(current_user.id) %></li> 

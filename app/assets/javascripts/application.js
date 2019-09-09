@@ -43,8 +43,8 @@ $(function(){
 
 
 
-$(document).on('change', 'input[type="file"]', function(e)  {
-
+$(document).on('change', '#document_file', function(e)  {
+  
     // ファイル情報を取得
     var fileData = e.target.files[0];
 

@@ -7,10 +7,10 @@
         
         <%= form_with(model: @document, local: true) do |f| %>
         <div class="file">
-             <div class="form-group">
+             <div class="form-group", id="file_up">
                 <%= f.label :file, "指導案のPDFをアップロード" %>
                 
-                <%= f.file_field :file, class: "pdf_post", value: 'PDF' %>
+                <%= f.file_field :file, class: "pdf_post" %>
         
                 <object data= "" type="application/pdf" width="500px" height="500px"></object>
             </div>

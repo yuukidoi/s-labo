@@ -28,3 +28,4 @@ end
 def current_document
         @current_document ||= Document.find_by(params[:id])
 end 
+

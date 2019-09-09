@@ -1,32 +1,30 @@
 <div class="row" id="user_info">
   <div class="offset-1 col-lg-2">
-    <div class="card">
-      <div class="card-header">
+    
+      
           <% if @user.image? %>
-            <%= image_tag @user.image.thumb.url, :size =>'180x180' %>
+            <p class="user-image"><%= image_tag @user.image.thumb.url, :size =>'180x180', id: 'user-image' %></p>
           <% else %>
-            <%= image_tag 's512_f_object_92_2bg.jpg', :size =>'180x150' %>
+            <p class="user-image"><%= image_tag 's512_f_object_92_2bg.jpg', :size =>'180x150', id: 'user-image' %></p>
           <% end %>
-        <h3 class="card-img"><%= @user.name %></h3>
-      </div>
+        <h3><%= @user.name %></h3>
+      
       <% if @user == current_user %>
-            <div class="card-body">
-               <%= link_to '編集', edit_user_path %>
-            </div>
-            
+               <%= link_to '編集', edit_user_path, data: {"turbolinks" => false} %>
       <% else %>
-            <div class="card-body">
-               <a>応援</a>
-            </div>
+           <a>応援</a>
       <% end %>
-    </div>
+   
   </div>
 
   <div class="col-lg-6">
-   <ul class='profile'>
+   
        <li>名前:<%= @user.name %></li>
        <li>自己紹介</li>
-   </ul>
-   <%= @user.introduce %>
+       
+   
+       <div class="box11">
+       <%= @user.introduce %>
+       </div>
   </div>
 </div>

@@ -23,7 +23,8 @@ class UsersController < ApplicationController
     
     if @user.save
       flash[:success] = '登録しました'
- 
+      @user && @user.authenticate(@user.password) #安全性大丈夫？
+    session[:user_id] = @user.id
       redirect_to @user
     else
       flash.now[:danger] = '登録失敗しました'
