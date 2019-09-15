@@ -7,7 +7,7 @@ class DocumentsController < ApplicationController
   
   def new
     @document = current_user.documents.new
-    @post = @document.posts.build
+    3.times { @document.posts.build }
     
   end
 
@@ -16,6 +16,7 @@ class DocumentsController < ApplicationController
     @posts = @document.posts.all
     @comment = @document.comments.new
     @comments = @document.comments.page(params[:page])
+    
     #@posts = @document.posts.first
   end
   

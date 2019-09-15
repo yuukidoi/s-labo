@@ -150,6 +150,29 @@ object{
     padding: 0;
 }
 
+.kakomi-box12 {
+ position: relative;
+ margin-top: 1em;
+ padding: 1em;
+ width: 90%;
+ color: #2c3e50; /* 文字色 */
+ background-color: #ecf0f1;
+ border: 2px solid #2980b9; /* 枠線の太さ・色 */
+ box-shadow: 2px 2px 1px #ccc;/* 影の色 */
+}
+.title-box12 {
+ position: absolute;
+ padding: 0 .5em;
+ left: 20px;
+ top: -15px;
+ font-weight: bold;
+ background-color: #ecf0f1; /* タイトル背景色 */
+ color: #2c3e50 /* タイトル文字色 */
+}
+
+
+
+
 .card-title{
     border-bottom: solid 3px #62c1ce;
 }

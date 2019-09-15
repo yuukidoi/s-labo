@@ -85,22 +85,18 @@
     </div>  
 </div>
 <div class="offset-lg-1 col-lg-11">
-    <div class="row">
+    <div class="">
             <div id="document_posts" class="form-group">
                    <%= f.fields_for :posts do |post| %>
-              <%#= render 'post_fields', f: post %>
-                <div id="links">
+                   <%= render 'documents/post_fields', f: post %>
+<!--                <div class="links">
                     <%#= link_to_add_association "写真を追加", f, :posts %>
                 </div>
-            
+-->            
        
        
            
-              <%#= render 'post_fields', f: post %>
-                <div id="links" class="form-group">
-                    <%= link_to_add_association "写真を追加", f, :posts %>
-                </div>
-            <% end %>
+                    <% end %>
         </div>>
     
   

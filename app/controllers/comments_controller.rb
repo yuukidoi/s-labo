@@ -12,14 +12,13 @@ class CommentsController < ApplicationController
             redirect_to root_url
         end 
     end
-
-
+    
 
 
 
 private
     def comment_params
-        params.require(:comment).permit(:content, :document_id)
+        params.require(:comment).permit(:content, :document_id, :user_id)
     end 
     
     
