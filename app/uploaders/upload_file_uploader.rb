@@ -5,7 +5,7 @@ class UploadFileUploader < CarrierWave::Uploader::Base
 
   # Choose what kind of storage to use for this uploader:
   if Rails.env.production?
-    include Cloudinary::carrierwave
+    include Cloudinary::Carrierwave
   else
     storage :file #cloudinaryを入れる
   end 
