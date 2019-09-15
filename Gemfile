@@ -58,6 +58,8 @@ gem 'kaminari'
 
 gem 'ransack'
 
+
+gem 'cloudinary'
 gem 'carrierwave'
 gem 'rmagick'
 
