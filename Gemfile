@@ -62,3 +62,7 @@ gem 'carrierwave'
 gem 'rmagick'
 
 gem 'acts-as-taggable-on', '~>6.0'
+
+gem 'cocoon'
+
+gem "jquery-rails"

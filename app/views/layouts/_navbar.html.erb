@@ -1,9 +1,7 @@
 <header class="header">
     <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#333333">
         <a class="navbar-brand offset-1" href="/" id="top">指導案Labo</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        
         
     <%= search_form_for @search do |f| %>
       <div class="actions">
@@ -12,7 +10,9 @@
         
       <%= f.submit "検索" , :class => 'search' %></div>
     <% end %>
-    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         
         <div class="collpase navbar-collapse justify-content-end" id ="navbarSupportedContent">
             <ul class="navbar-nav">

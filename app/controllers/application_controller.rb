@@ -21,11 +21,13 @@ class ApplicationController < ActionController::Base
     
     def counts(user)
       @count_likes = user.likes.count
+      @count_mylog = user.documents.count
     end 
-end
+
 
 
 def current_document
         @current_document ||= Document.find_by(params[:id])
 end 
 
+end

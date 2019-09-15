@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_06_141323) do
+ActiveRecord::Schema.define(version: 2019_09_13_113039) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2019_09_06_141323) do
     t.string "grade"
     t.string "subject"
     t.string "content"
+    t.string "reference"
     t.index ["user_id"], name: "index_documents_on_user_id"
   end
 

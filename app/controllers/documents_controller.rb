@@ -7,13 +7,15 @@ class DocumentsController < ApplicationController
   
   def new
     @document = current_user.documents.new
-    post = @document.posts.build
-  
+    @post = @document.posts.build
+    
   end
 
   def show
     @document = Document.find(params[:id])
-    @post = @document.posts.all
+    @posts = @document.posts.all
+    @comment = @document.comments.new
+    @comments = @document.comments.page(params[:page])
     #@posts = @document.posts.first
   end
   
@@ -30,9 +32,10 @@ class DocumentsController < ApplicationController
 
   def create
     @document = current_user.documents.build(document_params)
-    #@posts = @document.posts.build(post_params)
+    #@document.posts.build
     if @document.save
       #@posts.save
+      @document.posts.create
       flash[:success] = "投稿しました"
       redirect_to root_url
     else
@@ -50,16 +53,17 @@ class DocumentsController < ApplicationController
     redirect_to user_path(@document.user.id)
   end
 
+  
 
 
 private
 
   def document_params
-    params.require(:document).permit(:title, :goal, :explanation, :preparation, :school, :grade, :subject, :content, :file, :tag_list, posts_attributes: [:image, :image_cache, :image_comment])
+    params.require(:document).permit(:title, :goal, :explanation, :preparation, :school, :grade, :subject, :content, :file, :tag_list, posts_attributes: [:id, :post_id, :_destroy, :image, :image_cache, :image_comment])
   end 
   
   def post_params
-    params.require(:post).permit(:image)
+    params.require(:post).permit(:image, :image_cache,:image_comment)
   end 
   
   def correct_user

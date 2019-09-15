@@ -1,5 +1,5 @@
 <div class="offset-lg-1 test document">
-    <h1>指導案を共有</h1>
+    <h1>指導案PDFを共有</h1>
 </div>
 
 <div class="row">
@@ -8,11 +8,9 @@
         <%= form_with(model: @document, local: true) do |f| %>
         <div class="file">
              <div class="form-group", id="file_up">
-                <%= f.label :file, "指導案のPDFをアップロード" %>
-                
                 <%= f.file_field :file, class: "pdf_post" %>
-        
-                <object data= "" type="application/pdf" width="500px" height="500px"></object>
+       
+                <object data= "" type="application/pdf" width="500rem" height="550rem"></object>
             </div>
           
             
@@ -20,7 +18,7 @@
         </div>
         <div class="info_content">
             <div class="form-group">
-                <%= f.label :content, '単元' %>
+                <%= f.label :content, '単元 ※必須' %>
                 <%= f.text_field :content, class: 'form-control' %>
             </div>
             
@@ -32,12 +30,12 @@
     <div class="col-lg-6">
         <div class="text">
              <div class="form-group">
-                <%= f.label :title, '指導案タイトル' %>
+                <%= f.label :title, '指導案タイトル　※必須' %>
                 <%= f.text_field :title, class: 'form-control' %>
             </div>
 
             <div class="form-group">
-                <%= f.label :goal, 'ゴールの姿' %>
+                <%= f.label :goal, 'ゴールの姿　※必須' %>
                 <%= f.text_field :goal, class: 'form-control' %>
             </div>
         
@@ -50,20 +48,26 @@
                 <%= f.label :preparation, '準備物' %>
                 <%= f.text_field :preparation, class: 'form-control' %>
             </div>
+            
+            <div class="form-group">
+                <%= f.label :reference, '先行研究・参考文献' %>
+                <%= f.text_field :reference, class: 'form-control' %>
+            </div>
         
             <div class="form-group">
-                <%= f.label :tag_list, 'タグ' %>
+                <%= f.label :tag_list, 'タグ(スペースで区切る）' %>
                 <%= f.text_field :tag_list, value: @document.tag_list.join(', '), class: 'form-control' %>
             </div>
             
             <div class="info">
                 <div class="row">
+                    
                     <div class="form-group">
                         <%= f.label :school, '校種' %>
                         <%= f.select :school, [["小学校","小学校"],["中学校","中学校"],["高校","高校"],["その他","その他"]],:prompt => "校種選択" %>
                     </div>
                     <div class="form-group">
-                            <%= f.label :grade, '学年' %>
+                            <%= f.label :grade, '学年'%>
                         <%= f.select :grade, [["1年","1年"],["2年","2年"],["3年","3年"],["4年","4年"],["5年","5年"],["6年","6年"]],:prompt => "学年" %>
                     </div>
                     <div class="form-group">
@@ -71,64 +75,33 @@
                         <%= f.select :subject, [["国語","国語"],["算数・数学","算数・数学"],["社会","社会"],["理科","理科"],["英語","英語"],
                                                 ["体育","体育"],["音楽","音楽"],["図工","図工"],["道徳","道徳"],["その他","その他"]],:prompt => "教科" %>
                     </div>
+                    <p>※必須</p>
                 </div>
        
             </div>
         </div>
-    </div>    
-<div class="offset-lg-1">
+    </div>  
+</div>
+<div class="offset-lg-1 col-lg-11">
     <div class="row">
-     <div class="form-group">
-        <%= f.fields_for :posts do |fp| %>
-        　　<div class="card", id="new_image_document">
-                <div class="card-header">
-                    <%= fp.file_field :image %>
-                    <%= f.hidden_field :image_cache %>
-                    <%= f.hidden_field :document_id, value: @document.id %>
+            <div id="document_posts" class="form-group">
+                   <%= f.fields_for :posts do |post| %>
+              <%#= render 'post_fields', f: post %>
+                <div id="links">
+                    <%#= link_to_add_association "写真を追加", f, :posts %>
                 </div>
-            <div class="card-body">
-                    <%= fp.label :image_comment, 'キャッチ画像になります' %>
-                    <%= fp.text_field :image_comment, class: 'form-control' %>
-            </div>
-        </div>
-    　  <% end %>
-    </div>  
-     <div class="form-group">
-        <%= f.fields_for :posts do |fp| %>
-        　　<div class="card", id="new_image_document">
-                <div class="card-header">
-                    <%= fp.file_field :image %>
-                            <%= f.hidden_field :image_cache %>
-                    <%= f.hidden_field :document_id, value: @document.id %>
+            
+       
+       
+           
+              <%#= render 'post_fields', f: post %>
+                <div id="links" class="form-group">
+                    <%= link_to_add_association "写真を追加", f, :posts %>
                 </div>
-            <div class="card-body">
-                    <%= fp.label :image_comment %>
-                    <%= fp.text_field :image_comment, class: 'form-control' %>
-            </div>
-        </div>
-    　  <% end %>
-    </div>  
-     <div class="form-group">
-        <%= f.fields_for :posts do |fp| %>
-        　　<div class="card", id="new_image_document">
-                <div class="card-header">
-                    <%= fp.file_field :image %>
-                       <%= f.hidden_field :image_cache %>    
-                    <%= f.hidden_field :document_id, value: @document.id %>
-                </div>
-            <div class="card-body">
-                    <%= fp.label :image_comment %>
-                    <%= fp.text_field :image_comment, class: 'form-control' %>
-            </div>
-        </div>
-    　  <% end %>
-    </div> 
-  </div>
-</div>    
+            <% end %>
+        </div>>
     
-    
-    
-    
+  
  <%= f.submit '登録', class: 'btn btn-primary btn-block' %>
                     
           <% end %>

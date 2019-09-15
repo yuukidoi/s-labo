@@ -14,8 +14,9 @@ input[type="explanation"] {
 
 .box11{
     padding: 0.5em 1em;
-    margin: 2em 0;
-    color: #5d627b;
+    margin: 1em 0;
+    color: #2c3e50;
+    font-size: large;
     background: white;
     border-top: solid 5px #5d627b;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
@@ -45,3 +46,7 @@ li{
        
 }
 
+#introduce{
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}

@@ -6,21 +6,27 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
-  
-  
   get 'signup', to: 'users#new'
+  
   resources :users do
     member do
       get :likes
       get :mylog
     end 
   end 
-  
-  get 'comment', to: 'users#commnet'
-  
-  
   post 'edit', to: 'users#update'
-  resources :documents
+  
+  
+  #get 'comment', to: 'users#commnet'
+  #post 'comment', to: 'comments#create'
+  
+
+  resources :documents do
+    resources :comments, only: [:create, :destroy]
+  end 
+    
+  
+  
   get 'documents/download/:id' => 'documents#download', as: :download
   
   resources :posts, only: [:create, :destroy]

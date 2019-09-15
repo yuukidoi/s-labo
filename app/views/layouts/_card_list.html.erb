@@ -7,14 +7,14 @@
              
                   <div class="card-body">
                       <div class="row">
-                      <div class="col-lg-3">
+                      <div class="col-lg-5 col-sm-3">
                         <% if document.posts.first.present? %>
-                            <%= image_tag 's512_f_object_92_2bg.jpg', :size =>'180x180' %>
+                            <%= image_tag 's512_f_object_92_2bg.jpg',:size =>'180x180', class:'img-fluid' %>
                          <% else %>
-                            <%= image_tag 's512_f_object_92_2bg.jpg',:size =>'180x180' %>　<!--画像ないときの画像を決める   保存用　document.posts.first.image.thumb.url-->
+                            <%= image_tag 'no_image.jpg',:size =>'180x180',  class:'img-fluid' %>　<!--画像ないときの画像を決める   保存用　document.posts.first.image.thumb.url-->
                          <% end %>
                       </div>
-                      <div class="offset-lg-2 col-lg-7">
+                      <div class="col-lg-7 col-sm-9">
                             <h4 class="card-title"><%= document.title.truncate(18) %></h4>
 
                             <p class="card-text"><%= document.goal.truncate(30) %></p>
@@ -24,9 +24,13 @@
                       </div>
                       </div>
                    <p>投稿者　
-                   <%= document.user.name %> <%= document[:created_at].strftime("%Y-%m-%d") %>
-                   　　　　　　<%= link_to '指導案を見る', document_path(document.id) %>
+                   <%= document.user.name %>
+                   <%= link_to '指導案を見る', document_path(document.id) %>
                     </p>
+                    <% if logged_in? %>
+                    <%= render 'favorites/favorite_button', document: document %>
+                <% end %>
+                    
                   </div>
             </div>
         </div>  

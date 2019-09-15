@@ -13,6 +13,13 @@
  *= require_tree .
  *= require_self
  */
+html {
+    font-size: 62.5%;
+}
+body{
+    font-size: 1.6em;
+}
+
 
 .sign_up h1{
     color:#2c3e50;
@@ -42,7 +49,7 @@ body{
 
 a#top {
     font-family: 'Noto Sans JP', sans-serif;
-    font-size: 40px;
+    font-size: 4rem;
     color: #FFFFFF;
 }
 
@@ -50,17 +57,17 @@ a#top {
     color:#FFFFFF;
 }
 #document_search{
-    margin-left:250px;
+    
+    font-size: 2rem;
 }
 .search_name_here{
     font-family: 'Noto Sans JP', sans-serif;
-    font-size: 25px;
     color: #FFFFFF;
+    margin-left: 5rem;
 }
 
 .search{
      font-family: 'Noto Sans JP', sans-serif;
-    font-size: 25px;
     color: #000033;
 }
 
@@ -68,8 +75,12 @@ a#top {
 .nav-link {
      font-family: 'Noto Sans JP', sans-serif;
      color: #000033;
-     font-size: 15px;
-     margin-right: 60px;
+     font-size: 1.5rem;
+    
+}
+
+.dropdown-menu{
+    font-size: 1.5rem;
 }
 
 #card{
@@ -79,4 +90,27 @@ a#top {
 
 #image_user_edit{
     size: 50%;
+}
+
+
+
+
+@media only screen and (min-width:100px) {
+  html {
+    font-size: 38%;
+  }
+  
+}
+
+@media only screen and (min-width:651px) {
+  html {
+    font-size: 71.4286%;
+  }
+  
+}
+ 
+@media only screen and (min-width:961px) {
+  html {
+    font-size: 75.8929%;
+  }
 }

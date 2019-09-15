@@ -33,7 +33,8 @@ class User < ApplicationRecord
         self.likes.include?(document)
     end 
     
-    def comment(document)
+    def comment
+       self.comments.create_by(document_id: document.id)
     end 
     
         

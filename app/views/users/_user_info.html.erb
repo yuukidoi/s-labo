@@ -5,26 +5,23 @@
           <% if @user.image? %>
             <p class="user-image"><%= image_tag @user.image.thumb.url, :size =>'180x180', id: 'user-image' %></p>
           <% else %>
-            <p class="user-image"><%= image_tag 's512_f_object_92_2bg.jpg', :size =>'180x150', id: 'user-image' %></p>
+            <p class="user-image"><%= image_tag 's512_f_object_92_2bg.jpg', :size =>'180x180', id: 'user-image' %></p>
           <% end %>
-        <h3><%= @user.name %></h3>
+        
       
       <% if @user == current_user %>
                <%= link_to '編集', edit_user_path, data: {"turbolinks" => false} %>
-      <% else %>
-           <a>応援</a>
+      
       <% end %>
    
   </div>
 
-  <div class="col-lg-6">
+  <div class="col-lg-5">
    
-       <li>名前:<%= @user.name %></li>
-       <li>自己紹介</li>
+       <h3><%= @user.name %></h3>
        
-   
        <div class="box11">
-       <%= @user.introduce %>
+       <p id="introduce"><%= @user.introduce %></p>
        </div>
   </div>
 </div>

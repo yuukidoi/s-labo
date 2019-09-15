@@ -1,8 +1,10 @@
 .main {
   background-image: url("People climbing books. Business success, education level and staff and skill development vector concept.jpg");
+  
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  width:100%;
   height: 100vh;
 
 }
@@ -19,21 +21,59 @@ body{
 
 h1#top_title {
     font-family: sans-serif;
-    font-size: 120px;
+    font-size: 12rem;
     color: #fff;
-    margin-left:130px;
+    margin-left:13rem;
     text-shadow: -1.5px 1px 0 #000
 }
 
 h2#top_title{
     font-family: sans-serif;
-    font-size: 50px;
+    font-size: 5rem;
     color: #fff;
-    margin-left:130px;
+    margin-left:13rem;
     text-shadow: -1.5px 1px 0 #000
 }
 
 .pagination{
-    font-size: 60px;
+    font-size: 6rem;
     color: #ecf0f1;
+}
+
+@media only screen and (min-width:100px) {
+  .main {
+  background-image: url("People climbing books. Business success, education level and staff and skill development vector concept.jpg");
+  
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width:100%;
+  height: 19vh;
+
+  }
+}
+
+@media only screen and (min-width:651px) {
+  .main {
+  background-image: url("People climbing books. Business success, education level and staff and skill development vector concept.jpg");
+  
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width:100%;
+  height: 30vh;
+  }
+}
+
+@media only screen and (min-width:961px) {
+  .main {
+  background-image: url("People climbing books. Business success, education level and staff and skill development vector concept.jpg");
+  
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width:100%;
+  height: 100vh;
+
+  }
 }

@@ -24,5 +24,5 @@ class Document < ApplicationRecord
   has_many :users, through: :favorites, source: :user,dependent: :destroy
   has_many :comments,dependent: :destroy
   has_many :comenter, through: :coments, source: :user
-  
+  accepts_nested_attributes_for :posts, reject_if: :all_blank, allow_destroy: true 
 end
