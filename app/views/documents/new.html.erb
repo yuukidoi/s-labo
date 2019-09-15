@@ -6,6 +6,8 @@
     <div class="offset-1 col-lg-4">
         
         <%= form_with(model: @document, local: true) do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
+
         <div class="file">
              <div class="form-group", id="file_up">
                 <%= f.file_field :file, class: "pdf_post" %>
