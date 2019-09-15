@@ -89,7 +89,7 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
-  config.assets.complie = false
+  config.assets.complie = true
   config.serve_static_assets = true
 
   # Do not dump schema after migrations.
