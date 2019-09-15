@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: hkc1jmpeu
+  api_key: '976484284192847'
+  api_secret: Iccb5CnYXmq4S9u0DiBGPhsynzc
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: hkc1jmpeu
+  api_key: '976484284192847'
+  api_secret: Iccb5CnYXmq4S9u0DiBGPhsynzc
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: hkc1jmpeu
+  api_key: '976484284192847'
+  api_secret: Iccb5CnYXmq4S9u0DiBGPhsynzc
+  enhance_image_tag: true
+  static_file_support: false
