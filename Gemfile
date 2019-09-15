@@ -66,3 +66,7 @@ gem 'acts-as-taggable-on', '~>6.0'
 gem 'cocoon'
 
 gem "jquery-rails"
+
+group :production do
+  gem 'pg', '>= 0.18', '< 2.0'
+end 
