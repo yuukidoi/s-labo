@@ -8,6 +8,7 @@ class UploadFileUploader < CarrierWave::Uploader::Base
     include Cloudinary::CarrierWave
   else
     storage :file #cloudinaryを入れる
+    
   end 
 
   # Override the directory where uploaded files will be stored.

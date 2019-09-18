@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     
     if @user.save
       flash[:success] = '登録しました'
-      @user && @user.authenticate(@user.password) #安全性大丈夫？
+      @user && @user.authenticate(@user.password)
     session[:user_id] = @user.id
       redirect_to @user
     else
@@ -71,7 +71,7 @@ class UsersController < ApplicationController
 private
 
 def user_params
-  params.require(:user).permit(:name, :email, :introduce, :password, :password_confirmation, :image)
+  params.require(:user).permit(:name, :email, :introduce, :password, :password_confirmation, :image, :cache)
 end 
 
 

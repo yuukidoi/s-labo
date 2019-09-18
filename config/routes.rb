@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       get :mylog
     end 
   end 
-  post 'edit', to: 'users#update'
+#put 'edit', to: 'users#update'
   
   
   #get 'comment', to: 'users#commnet'
