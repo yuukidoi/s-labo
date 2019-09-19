@@ -5,9 +5,9 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Choose what kind of storage to use for this uploader:
   #if Rails.env.production?
-    include Cloudinary::CarrierWave
+    #include Cloudinary::CarrierWave
   #else
-  #  storage :file #cloudinaryを入れる
+    storage :file #cloudinaryを入れる
   #end 
   # storage :fog
 
@@ -16,6 +16,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
+  
+  def cache_dir
+      "#{Rails.root}/spec/support/uploads/tmp"
+  end 
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
