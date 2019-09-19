@@ -61,6 +61,7 @@ gem 'ransack'
 
 gem 'cloudinary'
 gem 'carrierwave'
+gem 'fog-aws'
 gem 'rmagick'
 
 gem 'acts-as-taggable-on', '~>6.0'
