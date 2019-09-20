@@ -3,9 +3,9 @@
     
       
           <% if @user.image? %>
-            <p class="user-image"><%= image_tag @user.image.thumb.url, :size =>'180x180', id: 'user-image' %></p>
+            <p class="user-image"><%= cl_image_tag @user.image.thumb.url, :size =>'180x180', id: 'user-image' %></p>
           <% else %>
-            <p class="user-image"><%= image_tag 's512_f_object_92_2bg.jpg', :size =>'180x180', id: 'user-image' %></p>
+            <p class="user-image"><%= cl_image_tag 's512_f_object_92_2bg.jpg', :size =>'180x180', id: 'user-image' %></p>
           <% end %>
         
       

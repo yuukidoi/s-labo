@@ -5,41 +5,41 @@
 
            
     <%= form_with(model: @user, local: true) do |f| %>
-<div class="row">
-        <div class="offset-lg-1 col-lg-4">
-            <%= render 'layouts/error_messages', model: f.object %>
-            <div class="form-group">
-                <div class="card">
-                    <div class="card-header">
-                        <%= f.label :image, 'クリックで画像変更' %>
-                
-                        <div id="img_field" onClick="$('#file').click()" >
-                        <% if @user.image.url.present? %>
-                          <%= image_tag @user.image.thumb.url, :size =>'180x150' %>
-                        <% else %>
-                          <%= image_tag 'no_image.jpg', :size =>'180x150' %>
-                        <% end %>
+        <div class="row">
+                <div class="offset-lg-1 col-lg-4">
+                    <%= render 'layouts/error_messages', model: f.object %>
+                    <div class="form-group">
+                        <div class="card">
+                            <div class="card-header">
+                                <%= f.label :image, 'クリックで画像変更' %>
+                        
+                                <div id="img_field" onClick="$('#file').click()" >
+                                    <% if @user.image.url.present? %>
+                                      <%= image_tag @user.image.thumb.url, :size =>'180x150' %>
+                                    <% else %>
+                                      <%= image_tag 'no_image.jpg', :size =>'180x150' %>
+                                    <% end %>
+                                </div>
+                                <%= f.file_field :image, class: "image", style: "display:none;", id: "file" %>
+                                <%= f.hidden_field :image_cache %>
+                            </div>
                         </div>
-                        <%= f.file_field :image, class: "image", style: "display:none;", id: "file" %>
-                        <%= f.hidden_field :image_cache %>
                     </div>
                 </div>
-            </div>
-        </div>
- 
-        <div class="col-lg-6">   
-            <div class="form-group">
-                <%= f.label :name, '名前' %>
-                <%= f.text_field :name, class: 'form-control' %>
-            </div>
+         
+                <div class="col-lg-6">   
+                    <div class="form-group">
+                        <%= f.label :name, '名前' %>
+                        <%= f.text_field :name, class: 'form-control' %>
+                    </div>
+                    
+                    <div class="form-group">
+                        <%= f.label :introduce, '自己紹介' %>
+                        <%= f.text_area :introduce, rows: 5, class: 'form-control' %>
+                    </div>      
+                </div>
             
-            <div class="form-group">
-                <%= f.label :introduce, '自己紹介' %>
-                <%= f.text_area :introduce, rows: 5, class: 'form-control' %>
-            </div>      
+                <%= f.submit '登録', class: 'btn btn-primary btn-block' %>
+           
         </div>
-    
-        <%= f.submit '登録', class: 'btn btn-primary btn-block' %>
-    <% end %>
-    </div>
-</div>
+     <% end %>

@@ -59,8 +59,8 @@ gem 'kaminari'
 gem 'ransack'
 
 
-gem 'cloudinary'
-gem 'carrierwave'
+gem 'cloudinary', '1.11.1'
+gem 'carrierwave', '~> 1.3.1'
 gem 'fog-aws'
 gem 'rmagick'
 
