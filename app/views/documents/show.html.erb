@@ -5,7 +5,10 @@
         <% if @document.file? %>
         <br>
         <%= @document.file.url %>
-         <object data= "<%= @document.file.url %>" type="application/pdf" width="100%" height="600px"></object>
+      <!--   <object data= "<%= @document.file.url %>" type="application/pdf" width="100%" height="600px"></object> -->
+         <iframe src="<%= @document.file.url %>" width="100%" height="100%">
+   <p><b>表示されない時の表示</b>: <a href="#">PDF をダウンロード</a>.</p>
+</iframe>
        <% else %>
          <%= image_tag 'no_image.jpg', :size =>'500x500'%>
     
