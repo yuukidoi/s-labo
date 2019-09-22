@@ -1,17 +1,20 @@
-<div class="row offset-lg-1">
 
-    <% posts.each do |post| %>    
-           
-             <div class="col-lg-3" id="card">
-                <div class="card bg-light">
-                    <div class="card-header">
-                         <%= image_tag post.image.url, class: 'img-fluid' if post.image.url %>
+<div class="row offset-lg-1">
+    
+        <% posts.each do |post| %>    
+               <% if post.image.present? %>
+                 <div class="col-lg-3" id="card">
+                    <div class="card bg-light">
+                        <div class="card-header">
+                             <%= image_tag post.image.url, class: 'img-fluid' if post.image.url %>
+                        </div>
+                        <div class="card-body">
+                            <p><%= post.image_comment %></p>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <p><%= post.image_comment %></p>
-                    </div>
-                </div>
-            </div> 
+                </div> 
+                <% end %>
+            
         
     <% end %>
  </div>
