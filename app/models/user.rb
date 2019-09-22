@@ -14,7 +14,7 @@ class User < ApplicationRecord
     has_many :favorites
     has_many :likes, through: :favorites, source: :document
     has_many :comments
-    has_many :log, through: :coments, source: :document
+    has_many :log, through: :comments, source: :document
     
     
     

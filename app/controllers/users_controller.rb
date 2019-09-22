@@ -56,14 +56,14 @@ class UsersController < ApplicationController
   
   def likes
     @user = User.find(params[:id])
-    counts(@user)
-        @likes = @user.favorites.page(params[:page])
-     @favorites = @user.likes.page(params[:page])
+    #counts(@user)
+        #@likes = @user.favorites.page(params[:page])
+    @likes = @user.likes.page(params[:page]).per(18).order('updated_at DESC')
   end 
   
   def mylog
     @user = User.find(params[:id])
-    @mylog = @user.documents.page(params[:page])
+    @mylog = @user.documents.page(params[:page]).per(18).order('updated_at DESC')
   end 
   
   

@@ -8,10 +8,10 @@
                   <div class="card-body">
                       <div class="row">
                       <div class="col-lg-5 col-sm-3">
-                        <% if document.posts.first.present? %>
-                            <%= image_tag 's512_f_object_92_2bg.jpg',:size =>'180x180', class:'img-fluid' %>
+                        <% if document.posts.first.image.present? %>
+                            <%= cl_image_tag document.posts.first.image.thumb.url, :width=>180, :height=>180, class:'img-fluid' %>
                          <% else %>
-                            <%= image_tag 'no_image.jpg',:size =>'180x180',  class:'img-fluid' %>　<!--画像ないときの画像を決める   保存用　document.posts.first.image.thumb.url-->
+                            <%= cl_image_tag "https://res.cloudinary.com/hkc1jmpeu/image/upload/v1569026462/186.jpg", :width=>180, :height=>180, class:'img-fluid' %>　<!--画像ないときの画像を決める   保存用　document.posts.first.image.thumb.url-->
                          <% end %>
                       </div>
                       <div class="col-lg-7 col-sm-9">
