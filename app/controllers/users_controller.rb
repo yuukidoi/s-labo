@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @documents = @user.documents.order(id: :desc).page(params[:page])
-    #counts(@documents)
+    counts(@user)
     @favorites = @user.likes.page(params[:page])
   end
 
@@ -52,10 +52,15 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:success] = "See You Again!"
+    redirect_to root_url
   end
   
   def likes
     @user = User.find(params[:id])
+    counts(@user)
     #counts(@user)
         #@likes = @user.favorites.page(params[:page])
     @likes = @user.likes.page(params[:page]).per(18).order('updated_at DESC')
@@ -63,6 +68,7 @@ class UsersController < ApplicationController
   
   def mylog
     @user = User.find(params[:id])
+    counts(@user)
     @mylog = @user.documents.page(params[:page]).per(18).order('updated_at DESC')
   end 
   

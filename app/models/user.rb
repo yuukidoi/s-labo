@@ -9,11 +9,11 @@ class User < ApplicationRecord
     
     
     has_secure_password
-    has_many :documents
+    has_many :documents,dependent: :destroy
     
-    has_many :favorites
+    has_many :favorites,dependent: :destroy
     has_many :likes, through: :favorites, source: :document
-    has_many :comments
+    has_many :comments,dependent: :destroy
     has_many :log, through: :comments, source: :document
     
     

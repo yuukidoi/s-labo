@@ -88,8 +88,8 @@
                     <div class="col-lg-11 row",id="comment">
                     <p id="comment"><%= comment.content %></p> 
                     
-                    <% if comment.user_id == current_user.id %>
-                    　 <%= link_to '削除', comment, method: :delete, data: {confirm: '本当に削除してよろしいですか' }, class: "badge badge-primary badge-pill", id: "comment_badge" %>
+                    <% if comment.user == current_user %>
+                    　 <%= link_to '削除', comment, method: :delete, data: {confirm: '本当に削除してよろしいですか' }, class: "badge badge-secondary", id: "comment_badge" %>
                     <% end %>
                     </div>
                 </div>

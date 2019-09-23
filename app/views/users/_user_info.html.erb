@@ -25,3 +25,16 @@
        </div>
   </div>
 </div>
+
+  <div class="col-sm-12">
+    <ul class="nav nav-tabs nav-justified mb-3">
+        
+        
+        
+      <li class="nav-item"><a href="<%= mylog_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(mylog_user_path(@user)) %>">投稿 <span class ="badge badge-secondary">
+      <%= @count_mylog %></span></a></li>
+      
+      <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">保存 <span class ="badge badge-secondary">
+      <%= @count_likes %></span></a></li>
+    </ul>
+  </div>
