@@ -84,14 +84,14 @@
         </div>
     </div>  
 </div>
-<div class="offset-1 col-lg-4 col-sm-9">
-    <div class="">
-            <div id="document_posts" class="form-group row">
+<div class="">
+
+            <div id="document_posts" class="form-group col-11">
                    <%= f.fields_for :posts do |post| %>
                    
                    <%= render 'documents/post_fields', f: post %>
-                   <%= render 'documents/post_fields', f: post %>
-                   <%= render 'documents/post_fields', f: post %>
+                   <%#= render 'documents/post_fields', f: post %>
+                   <%#= render 'documents/post_fields', f: post %>
 <!--                <div class="links">
                     <%#= link_to_add_association "写真を追加", f, :posts %>
                 </div>
@@ -102,7 +102,7 @@
                     <% end %>
         </div>
     
-  
+    <div class="offset-lg-1 col-lg-10">
  <%= f.submit '登録', class: 'btn btn-primary btn-block' %>
                     
           <% end %>

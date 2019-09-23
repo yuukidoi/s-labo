@@ -1,21 +1,19 @@
- <div class="form-group">
 
-   <div class="card col-lg-6", id="new_image_document">
+   <div class="card", id="new_image_document">
                 <div class="card-header">
-                    <div id="img_field" onClick="$('#file').click()" >
- 
-                    
-             
-                  </div>
-                    
-                    <%= f.file_field :image, class: "image", multiple: true,id: "file"%>
-                    <%= f.hidden_field :image_cache %>
-                    <%= f.hidden_field :document_id, value: @document.id %>
-                    
+                 
+                    <div class="view_box">
+                        <%= f.file_field :image, class: "file" %>
+                        <%= f.hidden_field :image_cache %>
+                        <%= f.hidden_field :document_id, value: @document.id %>
+                    </div>
                 </div>
             <div class="card-body">
                     <%= f.label :image_comment, 'コメント'%>
                     <%= f.text_field :image_comment, class: 'form-control' %>
             </div>
         </div>
-    </div>
+
+     
+    
+    
