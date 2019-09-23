@@ -23,11 +23,12 @@
   </head>
 
   <body>
-    <%= render 'layouts/navbar' %>
+    <div class="inner">
+      <%= render 'layouts/navbar' %>
   
       <%=render 'layouts/flash_messages' %>
       <%= yield %>
-  
+    </div>
     
   </body>
 </html>

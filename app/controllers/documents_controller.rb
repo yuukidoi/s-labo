@@ -7,7 +7,7 @@ class DocumentsController < ApplicationController
   
   def new
     @document = current_user.documents.new
-    3.times { @document.posts.build }
+     @document.posts.build
     
   end
 

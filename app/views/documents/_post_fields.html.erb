@@ -8,7 +8,7 @@
              
                   </div>
                     
-                    <%= f.file_field :image, class: "image", id: "file"%>
+                    <%= f.file_field :image, class: "image", multiple: true,id: "file"%>
                     <%= f.hidden_field :image_cache %>
                     <%= f.hidden_field :document_id, value: @document.id %>
                     

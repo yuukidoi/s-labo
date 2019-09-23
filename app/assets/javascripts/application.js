@@ -19,7 +19,6 @@
 //= require_tree .
 
 
-
 $(function(){
   $fileField = $('#file')
  
