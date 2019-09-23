@@ -78,16 +78,20 @@
         
     </div>
 <div class="offset-lg-1 col-lg-9">
-    <div class="comments row">
+    <div class="comments">
             <% @comments.each do |comment| %>
                 <div class="kakomi-box12">
                     <% user = User.find(comment.user_id) %>
-                    <P><%= user.name %></P>
-                    </br>
-                    <p><%= comment.content %></p> 
+                    <span class="title-box12 row"><P><%= cl_image_tag comment.user.image.url,  :size =>'45x45' %><%= link_to comment.user.name, user_path(comment.user.id) %></P></span>
+                    
+                    
+                    <div class="col-lg-11 row",id="comment">
+                    <p id="comment"><%= comment.content %></p> 
+                    
                     <% if comment.user_id == current_user.id %>
-                    　 <%= link_to '削除', comment, method: :delete, data: {confirm: '本当に削除してよろしいですか' }, class: "badge badge-primary badge-pill offset-11", id: "comment_badge" %>
+                    　 <%= link_to '削除', comment, method: :delete, data: {confirm: '本当に削除してよろしいですか' }, class: "badge badge-primary badge-pill", id: "comment_badge" %>
                     <% end %>
+                    </div>
                 </div>
             <% end %>
         

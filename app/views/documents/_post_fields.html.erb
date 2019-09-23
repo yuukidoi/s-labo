@@ -1,5 +1,6 @@
  <div class="form-group">
-   <div class="card col-lg-4", id="new_image_document">
+
+   <div class="card col-lg-6", id="new_image_document">
                 <div class="card-header">
                     <div id="img_field" onClick="$('#file').click()" >
  
@@ -13,7 +14,7 @@
                     
                 </div>
             <div class="card-body">
-                    <%= f.label :image_comment, '画像を選ぶ'%>
+                    <%= f.label :image_comment, 'コメント'%>
                     <%= f.text_field :image_comment, class: 'form-control' %>
             </div>
         </div>

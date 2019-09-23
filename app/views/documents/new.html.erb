@@ -3,7 +3,7 @@
 </div>
 
 <div class="row">
-    <div class="offset-1 col-lg-4">
+    <div class="offset-1 col-lg-4 col-sm-9">
         
         <%= form_with(model: @document, local: true) do |f| %>
         <%= render 'layouts/error_messages', model: f.object %>
@@ -29,7 +29,7 @@
         
     </div>    
         
-    <div class="col-lg-6">
+    <div class="offset-sm-1 col-sm-9 offset-lg-0 col-lg-6">
         <div class="text">
              <div class="form-group">
                 <%= f.label :title, '指導案タイトル　※必須' %>
@@ -84,10 +84,11 @@
         </div>
     </div>  
 </div>
-<div class="offset-lg-1 col-lg-11">
+<div class="offset-1 col-lg-4 col-sm-9">
     <div class="">
-            <div id="document_posts" class="form-group">
+            <div id="document_posts" class="form-group row">
                    <%= f.fields_for :posts do |post| %>
+                   
                    <%= render 'documents/post_fields', f: post %>
 <!--                <div class="links">
                     <%#= link_to_add_association "写真を追加", f, :posts %>

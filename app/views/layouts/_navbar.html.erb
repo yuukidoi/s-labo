@@ -20,8 +20,11 @@
             <% if logged_in? %>
             
             <li class="nav-item dropdown"></li>
-            　 <li class="navbar"><%= link_to '投稿', new_document_path, :class=> 'add', data: {"turbolinks" => false} %></li>
-               <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
+            　 <li class="navbar"><%= link_to new_document_path, :class=> 'add', data: {"turbolinks" => false} do %>
+            　 <i class="fas fa-file-upload", id="nav_icon"></i>投稿
+            　 <% end %>
+            　 </li>
+               <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fas fa-user", id="nav_icon"></i><%= current_user.name %></a>
                <ul class ="dropdown-menu dropdown-menu-right">
                     <li class="nav-item" ><%= link_to 'プロフィール', user_path(current_user.id) %></li> 
                     <li class="nav-item" id="drop"><%= link_to 'ログアウト', logout_path, method: :delete %></li>       
