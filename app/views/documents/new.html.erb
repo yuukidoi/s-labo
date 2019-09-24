@@ -67,7 +67,7 @@
                     
                     <div class="form-group">
                         <i class="fas fa-school icon"></i><%= f.label :school, '校種' %>
-                        <%= f.select :school, [["小学校","小学校"],["中学校","中学校"],["高校","高校"],["その他","その他"]],:prompt => "校種選択" %>
+                        <%= f.select :school, [["小学校","小学校"],["中学校","中学校"],["高校","高校"],["特別支援","特別支援"],["その他","その他"]],:prompt => "校種選択" %>
                     </div>
                     <div class="form-group">
                             <%= f.label :grade, '学年'%>
@@ -75,8 +75,7 @@
                     </div>
                     <div class="form-group">
                             <%= f.label :subject, '教科' %>
-                        <%= f.select :subject, [["国語","国語"],["算数・数学","算数・数学"],["社会","社会"],["理科","理科"],["英語","英語"],
-                                                ["体育","体育"],["音楽","音楽"],["図工","図工"],["道徳","道徳"],["その他","その他"]],:prompt => "教科" %>
+                        <%= f.text_field :subject, class: 'form=control' %>
                     </div>
                     <p>※必須</p>
                 </div>
