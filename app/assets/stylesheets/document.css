@@ -12,6 +12,12 @@ p#comment{
     height: 50% !important;
     margin-top: 2px;
 }
+
+#caution{
+    color: #d35400;
+    font: bold;
+}
+
 .file{
     width: 50%;
     
@@ -30,6 +36,10 @@ p#comment{
 
 object{
     background-color: #ecf0f1;
+}
+
+.icon{
+    color: #2c3e50;
 }
 
 .FileBtn {

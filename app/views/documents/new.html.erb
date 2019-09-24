@@ -1,5 +1,5 @@
 <div class="offset-lg-1 test document">
-    <h1>指導案PDFを共有</h1>
+    <h1>指導案のPDFを共有</h1>
 </div>
 
 <div class="row">
@@ -20,7 +20,7 @@
         </div>
         <div class="info_content">
             <div class="form-group">
-                <%= f.label :content, '単元 ※必須' %>
+                <i class="fas fa-book-open icon"></i><%= f.label :content, '単元 ※必須' %>
                 <%= f.text_field :content, class: 'form-control' %>
             </div>
             
@@ -32,32 +32,33 @@
     <div class="offset-sm-1 col-sm-9 offset-lg-0 col-lg-6">
         <div class="text">
              <div class="form-group">
-                <%= f.label :title, '指導案タイトル　※必須' %>
+               <i class="fas fa-file-invoice icon"></i> <%= f.label :title, '指導案タイトル　※必須' %>
                 <%= f.text_field :title, class: 'form-control' %>
             </div>
 
             <div class="form-group">
+                <i class="far fa-flag icon"></i>
                 <%= f.label :goal, 'ゴールの姿　※必須' %>
                 <%= f.text_field :goal, class: 'form-control' %>
             </div>
         
             <div class="form-group">
-                <%= f.label :explanation, '解説' %>
+                <i class="far fa-hand-point-right icon"></i><%= f.label :explanation, '解説' %>
                 <%= f.text_area :explanation, rows: 7, class: 'form-control' %>
             </div>
             
             <div class="form-group">
-                <%= f.label :preparation, '準備物' %>
+                <i class="fas fa-suitcase icon"></i><%= f.label :preparation, '準備物' %>
                 <%= f.text_field :preparation, class: 'form-control' %>
             </div>
             
             <div class="form-group">
-                <%= f.label :reference, '先行研究・参考文献' %>
+                <i class="fas fa-history icon"></i><%= f.label :reference, '先行研究・参考文献' %>
                 <%= f.text_field :reference, class: 'form-control' %>
             </div>
         
             <div class="form-group">
-                <%= f.label :tag_list, 'タグ(スペースで区切る）' %>
+                <i class="fas fa-tag icon"></i><%= f.label :tag_list, 'タグ(スペースで区切る）' %>
                 <%= f.text_field :tag_list, value: @document.tag_list.join(', '), class: 'form-control' %>
             </div>
             
@@ -65,7 +66,7 @@
                 <div class="row">
                     
                     <div class="form-group">
-                        <%= f.label :school, '校種' %>
+                        <i class="fas fa-school icon"></i><%= f.label :school, '校種' %>
                         <%= f.select :school, [["小学校","小学校"],["中学校","中学校"],["高校","高校"],["その他","その他"]],:prompt => "校種選択" %>
                     </div>
                     <div class="form-group">
@@ -84,8 +85,9 @@
         </div>
     </div>  
 </div>
-<div class="">
-
+<div class="offset-1">
+    <p><i class="far fa-images icon"></i>ノート・プリントなどの画像があれば添付。（1枚目がサムネ画像になります）</p>
+</div>
             <div id="document_posts" class="form-group col-11">
                    <%= f.fields_for :posts do |post| %>
                    
@@ -103,8 +105,8 @@
         </div>
     
     <div class="offset-lg-1 col-lg-10">
+        <p id="caution">※指導案や画像に児童・生徒の個人情報を含むものはありませんか？なければ投稿してください</p>
  <%= f.submit '登録', class: 'btn btn-primary btn-block' %>
                     
           <% end %>
     </div>
-</div>

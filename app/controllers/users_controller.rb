@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     session[:user_id] = @user.id
       redirect_to @user
     else
-      flash.now[:danger] = '登録失敗しました'
+      flash.now[:danger] = '登録できませんでした'
       render :new
     end 
   end

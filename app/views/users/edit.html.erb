@@ -38,11 +38,13 @@
                         <%= f.text_area :introduce, rows: 5, class: 'form-control' %>
                     </div>      
                 </div>
-            
+            <div class="submit offset-8 col-3">
                 <%= f.submit '登録', class: 'btn btn-primary btn-block' %>
-                
+             </div>   
            <% if current_user == @user %>
+           <div class="delete_user offset-9">
              <%= link_to 'アカウントを削除する', @user, method: :delete, data: {confirm: 'これまでの投稿もすべて削除されます。本当に削除してよろしいですか' }, class: "badge badge-secondary" %>
+             </div>
             <% end %>
         </div>
      <% end %>

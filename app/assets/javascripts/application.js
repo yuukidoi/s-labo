@@ -18,7 +18,7 @@
 //= require turbolinks
 //= require_tree .
 
-/*
+
 $(function(){
   $fileField = $('#file')
  
@@ -42,7 +42,6 @@ $(function(){
     reader.readAsDataURL(file);
   });
 });
-*/
 
 
 $(document).on('change', '#document_file', function(e)  {
