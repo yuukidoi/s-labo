@@ -41,6 +41,7 @@ class DocumentsController < ApplicationController
       redirect_to root_url
     else
       @document = current_user.documents.build(document_params)
+      3.times { @document.posts.build }
       flash[:danger] = "投稿できませんでした"
       render :new
     end 

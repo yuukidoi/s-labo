@@ -75,7 +75,7 @@
                     </div>
                     <div class="form-group">
                             <%= f.label :subject, '教科' %>
-                        <%= f.text_field :subject, class: 'form=control' %>
+                        <%= f.text_field :subject, class: 'form=control', placeholder: "国語　など" %>
                     </div>
                     <p>※必須</p>
                 </div>
@@ -97,14 +97,12 @@
                     <%#= link_to_add_association "写真を追加", f, :posts %>
                 </div>
 -->            
-       
-       
-           
                     <% end %>
-        </div>
+            </div>
     
     <div class="offset-lg-1 col-lg-10">
-        <p id="caution">※指導案や画像に児童・生徒の個人情報を含むものはありませんか？なければ投稿してください</p>
+        <p id="caution"><i class="fas fa-exclamation-triangle"></i>指導案や画像に児童・生徒の個人情報を含むものはありませんか？</p>
+        <p id="caution"><i class="fas fa-exclamation-triangle"></i>研究授業など公務で作った指導案は学校に著作権があります。学校長に許可を得たうえで投稿してください</p>
  <%= f.submit '登録', class: 'btn btn-primary btn-block' %>
                     
           <% end %>

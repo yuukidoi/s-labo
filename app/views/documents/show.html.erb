@@ -82,7 +82,7 @@
             <% @comments.each do |comment| %>
                 <div class="kakomi-box12">
                     <% user = User.find(comment.user_id) %>
-                    <span class="title-box12 row"><P><%= cl_image_tag comment.user.image.url,  :size =>'45x45' %><%= link_to comment.user.name.truncate(10), user_path(comment.user.id) %></P></span>
+                    <span class="title-box12 row"><P><%= cl_image_tag comment.user.image.url,  :size =>'45×45', :id => "comment-img" %><%= link_to comment.user.name.truncate(10), user_path(comment.user.id) %></P></span>
                     
                     
                     <div class="col-lg-11 row",id="comment">

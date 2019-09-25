@@ -8,8 +8,8 @@ class CommentsController < ApplicationController
             flash[:success] = "投稿しました"
             redirect_back(fallback_location:current_document)
         else
-            flash[:success] = "投稿してない"
-            redirect_to root_url
+            flash[:success] = "投稿できませんでした"
+            redirect_back(fallback_location:current_document)
         end 
     end
     

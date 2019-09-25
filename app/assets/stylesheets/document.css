@@ -2,6 +2,8 @@
   margin-left: 3em;
 }
 
+
+
 p#comment{
     text-align: center;
      padding-left: 10em;
@@ -14,7 +16,11 @@ p#comment{
 }
 
 #caution{
-    color: #d35400;
+    background-color:#d35400;
+}
+
+#caution{
+    color:  #ecf0f1;
     font: bold;
 }
 
@@ -194,9 +200,13 @@ object{
  /*border: 2px solid #2980b9;*/
  background-color: #ecf0f1; /* タイトル背景色 */
  color: #2c3e50 /* タイトル文字色 */
+ 
 }
 
-
+#comment-img{
+    max-width: 100%;
+    
+}
 
 
 .card-title{
