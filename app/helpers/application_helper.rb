@@ -17,7 +17,7 @@ module ApplicationHelper
       og: {
         site_name: :site, # もしくは site_name: :site
         title: :title, # もしくは title: :title
-        description: :description, # もしくは description: :description
+        #description: :description, # もしくは description: :description
         type: 'website',
         url: request.original_url,
       #  image: image_url('#'),
