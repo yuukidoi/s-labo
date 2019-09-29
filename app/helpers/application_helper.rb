@@ -15,9 +15,9 @@ module ApplicationHelper
       #  { href: image_url('#'), rel: '#', sizes: '180x180', type: 'image/jpg' },
       #],
       og: {
-        site_name: 'site', # もしくは site_name: :site
-        title: 'title', # もしくは title: :title
-        description: 'description', # もしくは description: :description
+        site_name: :site, # もしくは site_name: :site
+        title: :title, # もしくは title: :title
+        description: :description, # もしくは description: :description
         type: 'website',
         url: request.original_url,
       #  image: image_url('#'),
