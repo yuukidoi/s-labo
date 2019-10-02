@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     member do
       get :likes
       get :mylog
+      get :index
     end 
   end 
 #put 'edit', to: 'users#update'

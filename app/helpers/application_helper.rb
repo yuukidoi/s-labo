@@ -10,6 +10,7 @@ module ApplicationHelper
       keywords: '指導案,研究授業',
       canonical: request.original_url,
       separator: '-',
+      
     #  icon: [
      #   { href: image_url('#') },
       #  { href: image_url('#'), rel: '#', sizes: '180x180', type: 'image/jpg' },
@@ -20,7 +21,7 @@ module ApplicationHelper
         #description: :description, # もしくは description: :description
         type: 'website',
         url: request.original_url,
-      #  image: image_url('#'),
+        image: image_url('https://res.cloudinary.com/hkc1jmpeu/image/upload/v1569754088/2afb6497a3b5867f4f02e8459cee7e1f_o1mdfx'),
         locale: 'ja_JP',
       },
       twitter: {

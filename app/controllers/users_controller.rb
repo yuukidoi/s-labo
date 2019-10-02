@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show, :edit]
+  before_action :require_user_logged_in, only: [:edit, :update, :destroy]
   
   
   
   def index
+    @users = User.all
     
   end
 
@@ -50,6 +51,7 @@ class UsersController < ApplicationController
       render :edit
     end 
   end
+
 
   def destroy
     @user = User.find(params[:id])
